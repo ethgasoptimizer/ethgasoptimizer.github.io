@@ -124,6 +124,8 @@ Mempool is a waiting area for the transactions that haven't been added to a bloc
 |eth_subscribe|
 |eth_unsubscribe|
 
+WebSocket connecrion drops after 60 seconds of no activity. Can be kept active by calling the latest block every 50 seconds for example. The maximum number of open connections is 25 simultaneously.
+
 ## Subscribe to incoming (pending) transactions
 Example of how to subscribe to pending transactions from the mempool using Web3.js:
 
