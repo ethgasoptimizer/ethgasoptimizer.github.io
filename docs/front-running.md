@@ -26,7 +26,7 @@ Transactions are sent using the method eth_sendRawTransaction. It requires your 
 
 You can use your endpoint directly in your code, or paste it as a custom RPC to your wallet. Both ways require to use eth_sendRawTransaction method.
 
-### a) Calling sendRawTransaction method directly from your code: 
+### a) DEVELOPERS: Calling sendRawTransaction method directly from your code: 
 
 Sample code:
 
@@ -82,7 +82,7 @@ sendRawTransaction(txData).then(result => {
 )
 ```
 
-### b) Add the FR endpoint to your wallet (e.g. MetaMask or Brave):
+### b) END-USERS: Add the FR endpoint to your wallet (e.g. MetaMask or Brave):
 Navigate to the Networks dropdown menu and click “Add Network”. Paste your RPC URL. Set the Chain ID to 1 (ignore an error message). Save. MetaMask or another wallet provider will use eth_sendRawTransaction automatically. 
 
 ![MetaMask Custom Nettwork](https://miro.medium.com/max/700/1*Uq4Em1cncwNR99XDHn6N5Q.png)
