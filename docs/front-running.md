@@ -88,14 +88,12 @@ Navigate to the Networks dropdown menu and click “Add Network”. Paste your R
 ![MetaMask Custom Nettwork](https://miro.medium.com/max/700/1*Uq4Em1cncwNR99XDHn6N5Q.png)
 
 
-## No max. TX fee and no max. Gas fee
+## Unlimited TX fee and infinite Gas
 Users with the Front-Running extension have access to endpoints/Geth nodes with preconfigured parameters: <br>
---rpc.txfeecap=0, which disables the default max transaction fee <br>
---rpc.gascap=0 which disables the default max gas fee
+--rpc.txfeecap=0, which disables the default max transaction fee and makes it unlimited <br>
+--rpc.gascap=0 which disables the default max gas fee and makes it infinite
 
-By default, values are 1ETH for max. transaction fee, and 50000000 gwei for max. gas fee. [Read more](https://geth.ethereum.org/docs/interface/command-line-options). 
-
-:warning: **Users who did not purchase Front-running and do not use FR endpoint still have these default values!**
+:warning: **Users who did not purchase Front-running will keep having these [default values](https://geth.ethereum.org/docs/interface/command-line-options)!**
 
 ## Quick answers
 - Is it a Layer2 solution? - No
