@@ -1,19 +1,19 @@
 # ZMOK Documentation
-> The distributed cluster of Ethereum nodes designed for speed, peak performance and high availability.
+The distributed cluster of Ethereum nodes designed for speed, peak performance and high availability.
 
 # Getting Started
 Getting started with ZMOK (https://zmok.io) takes just a few minutes once you [connected your wallet](https://dashboard.zmok.io/).
 
 Seamlessly access Ethereum via the ZMOK load-balanced nodes and smart architecture the same way you would via your nodes. We have built services and APIs around [JSON RPC](https://github.com/ethereum/wiki/wiki/JSON-RPC) over HTTPS that you can use with your favourite libraries and frameworks, on Ethereum networks - Mainnet, Ropsten, Rinkeby and Mainnet enhanced with Front-running.
 
-# Authenticating using an APP ID
+## Authenticating using an APP ID
 ZMOK's Ethereum APIs require a valid APP ID to be included with your request traffic. This identifier should be appended to the request URL.
 
 ```sh
 curl https://api.zmok.io/<NETWORK>/<YOUR-APP-ID>
 ```
 
-# Choose a Network
+## Choose a Network
 Use one of these endpoints as your Ethereum client provider.
 
 ?> **NOTE: Be sure to replace YOUR-APP-ID with an APP ID from your ZMOK dashboard**
@@ -28,7 +28,7 @@ Use one of these endpoints as your Ethereum client provider.
 | RINKEBY | [https://api.zmok.io/testnet/YOUR-APP-ID](https://api.zmok.io/testnet/YOUR-APP-ID)<br/>[wss://api.zmok.io/testnet/YOUR-APP-ID](wss://api.zmok.io/testnet/YOUR-APP-ID) |
 | ROPSTEN | [https://api.zmok.io/ropsten/YOUR-APP-ID](https://api.zmok.io/ropsten/YOUR-APP-ID)<br/>[wss://api.zmok.io/ropsten/YOUR-APP-ID](wss://api.zmok.io/ropsten/YOUR-APP-ID) |
 
-# Hello World
+## Hello World
 Ethereum and Web3.js “Hello World”:
 
 [https://github.com/zmok-io/ethbalance](https://github.com/zmok-io/ethbalance)
