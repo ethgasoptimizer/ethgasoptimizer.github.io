@@ -1,18 +1,34 @@
 # Front-Running
+Front-running extension makes your transaction being picked by miners almost immediately, in milliseconds. Without Front-running, your transaction needs to wait to be picked and processed by miners, no matter what gas you used.
 
-With ZMOK your transaction may be front-run against the other transactions in the mempool. The front-running is described as the “act of getting a transaction first in line in the execution queue, right before a known future transaction occurs”.
+Your transaction is sent multi-regionally. When you sign and send your transaction, it is sent to many nodes globally to increase the chances to be noticed by miners. Why? The current Block in Asia may be X while the block in the US is X+2 at the same time. Your transaction is recognised in all regions globally. Without Front-running, it is sent to only one node assigned randomly, so your transaction may keep stuck in a location out of the region where the new block is mined.
 
-With ZMOK FRONT-RUNNING a new submited transaction is uniquely distributed accross the very large cluster of distributed Ethereum nodes. This ensures that this transaction will be part of the next mined block as fast as possible.
+This way, 99.99% of sent transactions are processed in the next/newest block globally. 
 
-Methods enhanced with Front-Running:
+The order in this newest block is set by gas you used. ZMOK does not set your gas! You do, or the bot you use can do this for you. 
+
+## Purchase
+Front-Running is the extension and can be purchased together with any paid package only. Why? Sending transaction always consists of many read methods and one eth_sendRawTransaction method. Therefore, it happens a Free package (30req/sec) is not enough. We want to be sure users will have enough reading requests and one sending request. For this, you need at least Scaling (100req/sec) too.
+
+Upgrade your profile and hit Front-running checkbox. Then create a new app and copy the HTTP endpoint.
+![Front-running check](https://miro.medium.com/max/700/0*03KAiR0u028F8zEA)
+![Copy endpoint](https://miro.medium.com/max/700/0*sm7bo8lvLeesFM5r)
+
+## Sending transactions
 
 | Method |
 | ------ |
 |eth_sendRawTransaction|
 
-!> **INFO: Method eth_sendRawTransaction enhanced with Front-Running is available only for packages with enabled Front-Running.**
+Transactions are sent using the method eth_sendRawTransaction. It requires your transaction to be already signed and serialized. So it requires extra serialization steps to use but enables you to broadcast transactions on hosted nodes. All of them would require using sendRawTransaction().
 
-Sample usage:
+:warning: **Using this method, ZMOK has no way to unlock your local accounts**
+
+You can use your endpoint directly in your code, or paste it as a custom RPC to your wallet. Both ways require to use eth_sendRawTransaction method.
+
+### a) Calling sendRawTransaction method directly from your code: 
+
+Sample code:
 
 ```js
 // sendRawTransaction.js
@@ -66,14 +82,24 @@ sendRawTransaction(txData).then(result => {
 )
 ```
 
-# ProviderError: exceeds the configured cap (1.00 ether).
-Users with enabled Front-Running, have also access to endpoints/Geth nodes with preconfigured param --rpc.txfeecap=0, which disable the default max transaction fee. More info: https://geth.ethereum.org/docs/interface/command-line-options.
+### b) Add the FR endpoint to your wallet (e.g. MetaMask or Brave):
+Navigate to the Networks dropdown menu and click “Add Network”. Paste your RPC URL. Set the Chain ID to 1 (ignore an error message). Save. MetaMask or another wallet provider will use eth_sendRawTransaction automatically. 
 
-Sample usage:
+![MetaMask Custom Nettwork](https://miro.medium.com/max/700/1*Uq4Em1cncwNR99XDHn6N5Q.png)
 
-```sh
-$ curl -X POST \
--H "Content-Type: application/json" \
---data '{"jsonrpc": "2.0", "id": 1, "method": "eth_sendRawTransaction", "params": ["0xf867808082520894036d0e47e9844e6d0fb5bd104043599f889fc215880de0b6b3a7640000801ca08095e722b96d9f13f3bf5ac997d7cedbd2c0f82295d47b770faad526b4e7e519a05262eef932e223130d1f72664162b897c6129f0164e0806ed959b9abd6f23a39"]}' \
-"https://api.zmok.io/notxfeecap/YOUR-APP-ID"
-```
+
+## No max. TX fee and no max. Gas fee
+Users with the Front-Running extension have access to endpoints/Geth nodes with preconfigured parameters: <br>
+--rpc.txfeecap=0, which disables the default max transaction fee <br>
+--rpc.gascap=0 which disables the default max gas fee
+
+By default, values are 1ETH for max. transaction fee, and 50000000 gwei for max. gas fee. [Read more](https://geth.ethereum.org/docs/interface/command-line-options). 
+
+:warning: **Users who did not purchase Front-running and do not use FR endpoint still have these default values!**
+
+## Quick answers
+- Is it a Layer2 solution? - No
+- Will be reading blockchain faster too? - No
+- It is MEV? - No
+- Do you send my transactions to private miners? - No
+- Can I create multiple FR endpoints? - Yes
