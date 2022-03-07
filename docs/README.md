@@ -209,11 +209,11 @@ If you are interested in inspecting historical data (data outside of the most re
 |eth_getStorageAt|
 |eth_call|
 
-[filename](front-running.md ':include')
+[Front-Running](front-running.md ':include')
 
-[filename](performance-tuning.md ':include')
+[Performance Tuning](performance-tuning.md ':include')
 
-[filename](faq.md ':include')
+[FAQ](faq.md ':include')
 
 # Support
 For support, please email to: [support@zmok.io](mailto:support@zmok.io).
