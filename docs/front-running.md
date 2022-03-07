@@ -3,9 +3,10 @@ Front-running extension makes your transaction being picked by miners almost imm
 
 Your transaction is sent multi-regionally. When you sign and send your transaction, it is sent to many nodes globally to increase the chances to be noticed by miners. Why? The current Block in Asia may be X while the block in the US is X+2 at the same time. Your transaction is recognised in all regions globally. Without Front-running, it is sent to only one node assigned randomly, so your transaction may keep stuck in a location out of the region where the new block is mined.
 
-This way, 99.99% of sent transactions are processed in the next/newest block globally. 
+This way, 99.99% of sent transactions are processed in the next/newest block globally.
 
-The order in this newest block is set by gas you used. ZMOK does not set your gas! You do, or the bot you use can do this for you. 
+The order in this newest block is set by gas you used. ZMOK does not set your gas! You do, or the bot you use can do this for you.
+
 
 ## Purchase
 Front-Running is the extension and can be purchased together with any paid package only. Why? Sending transaction always consists of many read methods and one eth_sendRawTransaction method. Therefore, it happens a Free package (30req/sec) is not enough. We want to be sure users will have enough reading requests and one sending request. For this, you need at least Scaling (100req/sec) too.
@@ -26,7 +27,7 @@ Transactions are sent using the method eth_sendRawTransaction. It requires your 
 
 You can use your endpoint directly in your code, or paste it as a custom RPC to your wallet. Both ways require to use eth_sendRawTransaction method.
 
-### a) DEVELOPERS: Calling sendRawTransaction method directly from your code: 
+### a) DEVELOPERS: Calling sendRawTransaction method directly from your code:
 
 Sample code:
 
@@ -83,7 +84,7 @@ sendRawTransaction(txData).then(result => {
 ```
 
 ### b) END-USERS: Add the FR endpoint to your wallet (e.g. MetaMask or Brave):
-Navigate to the Networks dropdown menu and click “Add Network”. Paste your RPC URL. Set the Chain ID to 1 (ignore an error message). Save. MetaMask or another wallet provider will use eth_sendRawTransaction automatically. 
+Navigate to the Networks dropdown menu and click “Add Network”. Paste your RPC URL. Set the Chain ID to 1 (ignore an error message). Save. MetaMask or another wallet provider will use eth_sendRawTransaction automatically.
 
 ![MetaMask Custom Nettwork](https://miro.medium.com/max/700/1*Uq4Em1cncwNR99XDHn6N5Q.png)
 
