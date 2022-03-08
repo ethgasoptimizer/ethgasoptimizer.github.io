@@ -13,9 +13,9 @@ Your transaction is sent multi-regionally. When you sign and send your transacti
 
 Transactions are sent using the method eth_sendRawTransaction. It requires your transaction to be already signed and serialized.
 
-!> **INFO: Transaction must be signed by your account before. ZMOK has no way to unlock your local account.**
+!> **INFO: Transaction must be signed by your account before is sent to ZMOK. ZMOK has no way to unlock your local account.**
 
-You can use Front-running endpoint directly in your code, or paste it as a custom RPC to your wallet. Both are using *eth_sendRawTransaction* method.
+You can use the Front-running endpoint directly in your code, or paste it as a custom RPC to your wallet. Both are using *eth_sendRawTransaction* method.
 
 ### a) DEVS: Calling *sendRawTransaction* method directly from your code:
 Sample code:
@@ -100,4 +100,4 @@ Users with the Front-running extension have access to endpoints/nodes with preco
 Front-Running is the extension of any paid plans and can be purchased here: <br/>
 https://dashboard.zmok.io/upgrade
 
-Don't forget to check Front-running checkbox, then create a new App with NETWORK: MAINNET FRONT-RUNNIG.
+Don't forget to check the Front-running checkbox, then create a new App with NETWORK: MAINNET FRONT-RUNNING.
