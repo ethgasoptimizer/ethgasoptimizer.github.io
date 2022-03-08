@@ -17,3 +17,6 @@ In this case, you must check on pending transactions, find one with the highest 
 
 ## What is the fastest way to communicate with Zmok? WebSockets or HTTP?
 If we'd need to decide between two variants (HTTP vs. WebSockets) in general, we'd prefer to recommend you the HTTP option. WS will connect you to only one node. It's cool if this node has your requested data already synced, so the answer will be fast. If not, this one node will wait to get data for you. For parsing new blocks, HTTP is highly recommended, because you're getting the answer from the cluster of nodes. This means the chance this will be the fastest way, for most of you, is much higher.
+
+## Does my endpoint work?
+You can do a very quick check by sending a curl request online with your endpoint, e.g. [https://reqbin.com/c-zokn0wuy](https://reqbin.com/c-zokn0wuy)
