@@ -1,7 +1,7 @@
 # FAQ (Frequently Asked Questions)
 
 ## Using Front-Running, can I save on gas fees and be the first at the same time?
-With Front-Running your transaction will be picked and processed by miners very fast, on average in some milliseconds. The next thing is how it will be prioritised in the newest block globally.
+With Front-Running your transaction will be picked and processed by miners very fast, on average in some milliseconds. The next thing is how it will be prioritised in the order of the newest block globally.
 
 Some miners on the Ethereum chain, like Ethermine, use non-conventional ordering for their benefit, aka they generally don't do the by-gas sort. Other miners can choose to sort by gas and nonce, others can choose to sort by gas and first-seen-time, others can first sort by gas and then randomise the order, others can sort by gas first and then put the "greatest" sender addresses at the top or bottom, which is converting an address to a 160-bit integer and working with those values.
 
@@ -14,3 +14,6 @@ Not really, a basic paid plan shall be enough.
 ## If current Gwei changes rapidly during the public drop, do I need to change my gas?
 In this case, you must check on pending transactions, find one with the highest gast and after that submit again with the same nonce:
 [How to send a replacement transaction with a higher gas price](https://ethereum.stackexchange.com/questions/99651/how-to-send-a-replacement-transaction-with-a-higher-gas-price?rq=1)
+
+## Is using WebSockets the fastest way to communicate with Zmok?
+If we'd need to decide between two variants (HTTP vs. WebSockets) in general, we'd prefer to recommend you the HTTP option. WS will connect you to only one node. It's cool if this node has your requested data already synced, so the answer will be fast. For parsing new blocks, HTTP is highly recommended, because you're getting the answer for the cluster of nodes. This means the chance this will be the fastest way, for most of you, is much higher.
