@@ -15,7 +15,7 @@ Not really, a basic paid plan shall be enough.
 In this case, you must check on pending transactions, find one with the highest gast and after that submit again with the same nonce:
 [How to send a replacement transaction with a higher gas price](https://ethereum.stackexchange.com/questions/99651/how-to-send-a-replacement-transaction-with-a-higher-gas-price?rq=1)
 
-## What is the fastest way to communicate with Zmok? WebSockets or HTTP?
+## What is the fastest way to communicate with ZMOK? WebSockets or HTTP?
 If we'd need to decide between two variants (HTTP vs. WebSockets) in general, we'd prefer to recommend you the HTTP option. WS will connect you to only one node. It's cool if this node has your requested data already synced, so the answer will be fast. If not, this one node will wait to get data for you. For parsing new blocks, HTTP is highly recommended, because you're getting the answer from the cluster of nodes. This means the chance this will be the fastest way, for most of you, is much higher.
 
 ## Does my endpoint work?

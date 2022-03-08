@@ -83,9 +83,32 @@ Users with the Front-running extension have access to endpoints/nodes with preco
 - *--rpc.txfeecap=0* which disables the default max transaction fee and makes it unlimited
 - *--rpc.gascap=0*  which disables the default max gas fee and makes it infinite</li>
 
-
-
 !> **WARN: Users who did not purchase Front-running will keep having these [default values](https://geth.ethereum.org/docs/interface/command-line-options) -  max transaction fee: 1 ETH and gas cap 50000000.**
+
+## Global Tx mempool
+With Front-running extension users have also access to pending/queued transaction from multiple regions.
+
+When accessing Tx mempool from single node, you can get about 2k - 6k transactions from mempool, with ZMOK global mempool you can get more than 50k pending/queued transactions in real-time.
+
+| Method |
+| ------ |
+|zmk_txpool_status|
+|zmk_txpool_content|
+
+```sh
+curl -X POST -H 'Content-type: application/json' -d '{"jsonrpc": "2.0", "method": "txpool_status", "id": 1}' https://api.zmok.io/mainnet/YOUR-APP-ID
+{"jsonrpc":"2.0","id":1,"result":{"pending":"0x1400","queued":"0x400"}}
+# 5120 transactions
+
+# vs
+
+curl -X POST -H 'Content-type: application/json' -d '{"jsonrpc": "2.0", "method": "zmk_txpool_status", "id": 1}' https://api.zmok.io/fr/YOUR-APP-ID
+{"jsonrpc":"2.0","id":1,"result":{"pending":"0xdc2e","queued":"0xbbbe"}}
+# 56366 transactions
+
+```
+
+?> INFO: ZMOK global Tx pool - methods zmk_txpool_status and zmk_txpool_content are available only for users with Front-running extension.
 
 
 ## Quick answers

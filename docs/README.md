@@ -118,6 +118,10 @@ Mempool is a waiting area for the transactions that haven't been added to a bloc
 |txpool_content|
 |txpool_inspect|
 |txpool_status|
+|zmk_txpool_status|
+|zmk_txpool_content|
+
+?> INFO: ZMOK global Tx mempool - methods zmk_txpool_status and zmk_txpool_content are available only for users with Front-running extension.
 
 ## Pub/Sub Websocket Methods
 ?> **NOTE: Ethereum Pub/Sub subscription support is only supported over "stateful" transports such as WebSocket.**
