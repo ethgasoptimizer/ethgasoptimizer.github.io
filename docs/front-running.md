@@ -83,7 +83,7 @@ Users with the Front-running extension have access to endpoints/nodes with preco
 - *--rpc.txfeecap=0* which disables the default max transaction fee and makes it unlimited
 - *--rpc.gascap=0*  which disables the default max gas fee and makes it infinite</li>
 
-!> **WARN: Users who did not purchase Front-running will keep having these [default values](https://geth.ethereum.org/docs/interface/command-line-options) -  max transaction fee: 1 ETH and gas cap 50000000.**
+!> **WARN: Users who did not purchase Front-running will keep having these [default values](https://geth.ethereum.org/docs/interface/command-line-options) -  max transaction fee: 1 ETH and gas cap 50000000 wei.**
 
 ## Global Tx mempool
 With Front-running extension users have also access to pending/queued transaction from multiple regions.
