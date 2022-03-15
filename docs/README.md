@@ -24,7 +24,6 @@ Use one of these endpoints as your Ethereum client provider.
 | MAINNET | [https://api.zmok.io/mainnet/YOUR-APP-ID](https://api.zmok.io/mainnet/YOUR-APP-ID)<br/>[wss://api.zmok.io/mainnet/YOUR-APP-ID](wss://api.zmok.io/mainnet/YOUR-APP-ID) |
 | MAINNET - ARCHIVE | [https://api.zmok.io/archive/YOUR-APP-ID](https://api.zmok.io/archive/YOUR-APP-ID)<br/>[wss://api.zmok.io/archive/YOUR-APP-ID](wss://api.zmok.io/archive/YOUR-APP-ID)|
 | MAINNET - FRONT RUNNING | [https://api.zmok.io/fr/YOUR-APP-ID](https://api.zmok.io/fr/YOUR-APP-ID)<br/>[wss://api.zmok.io/fr/YOUR-APP-ID](wss://api.zmok.io/fr/YOUR-APP-ID)|
-| MAINNET - RPC.TXFEECAP=0 | [https://api.zmok.io/notxfeecap/YOUR-APP-ID](https://api.zmok.io/notxfeecap/YOUR-APP-ID)<br/>[wss://api.zmok.io/notxfeecap/YOUR-APP-ID](wss://api.zmok.io/notxfeecap/YOUR-APP-ID)|
 | RINKEBY | [https://api.zmok.io/testnet/YOUR-APP-ID](https://api.zmok.io/testnet/YOUR-APP-ID)<br/>[wss://api.zmok.io/testnet/YOUR-APP-ID](wss://api.zmok.io/testnet/YOUR-APP-ID) |
 | ROPSTEN | [https://api.zmok.io/ropsten/YOUR-APP-ID](https://api.zmok.io/ropsten/YOUR-APP-ID)<br/>[wss://api.zmok.io/ropsten/YOUR-APP-ID](wss://api.zmok.io/ropsten/YOUR-APP-ID) |
 
