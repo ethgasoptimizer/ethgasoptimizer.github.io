@@ -95,20 +95,44 @@ When accessing Tx mempool from single node, you can get about 2k - 6k transactio
 |zmk_txpool_status|
 |zmk_txpool_content|
 
+
+?> INFO: ZMOK global Tx pool - methods zmk_txpool_status and zmk_txpool_content are available only for users with Front-running extension.
+
+
+### zmk_txpool_status
+Returns the number of transactions currently pending for inclusion in the next block(s), as well as the ones that are being scheduled for future execution only.
+
+**Example:**
 ```sh
 curl -X POST -H 'Content-type: application/json' -d '{"jsonrpc": "2.0", "method": "txpool_status", "id": 1}' https://api.zmok.io/mainnet/YOUR-APP-ID
+
 {"jsonrpc":"2.0","id":1,"result":{"pending":"0x1400","queued":"0x400"}}
 # 5120 transactions
 
 # vs
 
 curl -X POST -H 'Content-type: application/json' -d '{"jsonrpc": "2.0", "method": "zmk_txpool_status", "id": 1}' https://api.zmok.io/fr/YOUR-APP-ID
-{"jsonrpc":"2.0","id":1,"result":{"pending":"0xdc2e","queued":"0xbbbe"}}
+
+{"jsonrpc":"2.0","id":1,"result":{"pending":"0xdc2e","queued":"0xbbbe","total":"0x197ec"}}
 # 56366 transactions
 
 ```
 
-?> INFO: ZMOK global Tx pool - methods zmk_txpool_status and zmk_txpool_content are available only for users with Front-running extension.
+### zmk_txpool_content
+Returns a list with the exact details of all the transactions currently pending for inclusion in the next block(s), as well as the ones that are being scheduled for future execution only.
+
+**Parameters:**<br/>
+1: offset - (optional) start index (default is 0)<br/>
+2: limit - (optional) number of items to return (default/maximum is 10000)<br/>
+
+**Example:**
+
+```sh
+curl -X POST -H 'Content-type: application/json' -d '{"jsonrpc": "2.0", "method": "zmk_txpool_content", "params":[0, 10], "id": 1}' https://api.zmok.io/fr/YOUR-APP-ID
+
+{"jsonrpc":"2.0","id":1,"result":{"pending":{"0x5f7a3238efb2d450be97afcf5b1dd34451024d860fe65a9eea1fe116508ec124":{"302213":{"blockHash":null,"blockNumber":null,"from":"0x077d360f11d220e4d5d831430c81c26c9be7c4a4","gas":"0x15f90","gasPrice":"0x9d21fb900","hash":"0x5f7a3238efb2d450be97afcf5b1dd34451024d860fe65a9eea1fe116508ec124","input":"0x","nonce":"0x49c85","to":"0xe0f70bc1c864b7ace8a80d454565ee5b6f68dfd4","transactionIndex":null,"value":"0x388b7b360f3000","type":"0x0","v":"0x26","r":"0x25e22877938610b58ed2f941399b551d9749030c2112f4845fe382ea504fa4bd","s":"0x129832f580977771e1184b39d55a699700855562badb656a6c12d59d01efbd48"}},"0xe2e22009fc6ca711311b354f75c15de2a96cd8f8aea7f8baf91911881b5d78e1":{"315739":{"blockHash":null,"blockNumber":null,"from":"0x48c04ed5691981c42154c6167398f95e8f38a7ff","gas":"0x2bf20","gasPrice":"0x9d21fb900","hash":"0xe2e22009fc6ca711311b354f75c15de2a96cd8f8aea7f8baf91911881b5d78e1","input":"0xa9059cbb000000000000000000000000f8f0036fd0c89113ad06fec122ce8fc50c4bd8b500000000000000000000000000000000000000000000000000000000c20c945d","nonce":"0x4d15b","to":"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48","transactionIndex":null,"value":"0x0","type":"0x0","v":"0x25","r":"0x4c803af95903e07f34bc52db272015c5e3a3340f8ff8c436c970617e1179661f","s":"0x2693cd957456b3481aefc968f1730ffdfb3bd81e6dc4115fc2771ccfa82d1b9a"}},"0x64b8475106ac18997f467f2c5ef78c1764f341b00a72619e62d1449c62c9e4a4":{"315740":{"blockHash":null,"blockNumber":null,"from":"0x48c04ed5691981c42154c6167398f95e8f38a7ff","gas":"0x2bf20","gasPrice":"0x9d21fb900","hash":"0x64b8475106ac18997f467f2c5ef78c1764f341b00a72619e62d1449c62c9e4a4","input":"0xa9059cbb000000000000000000000000b27e804cbeeecedec9d108f68f106130987bd488000000000000000000000000000000000000000000000000000000091bf2a586","nonce":"0x4d15c","to":"0x2b591e99afe9f32eaa6214f7b7629768c40eeb39","transactionIndex":null,"value":"0x0","type":"0x0","v":"0x26","r":"0x1367e3e1055b2d5a78d7d9f47520e393dc8b367c3afdb0253375e65de4a80568","s":"0x16c51b16c675275207883ff21bfdb5b9ac4c741611f6e9ef4abcce5317e540c3"}}},"queued":{"0x31986f54bf1e90917624cce28dbf18f3956cf1e27d182066c03c2d9eb1453886":{"94":{"blockHash":null,"blockNumber":null,"from":"0x2a402ad72de749cf86663612c4db9018e60c19e1","gas":"0x12e74","gasPrice":"0x218711a000","maxFeePerGas":"0x218711a000","maxPriorityFeePerGas":"0x77ce2a80","hash":"0x31986f54bf1e90917624cce28dbf18f3956cf1e27d182066c03c2d9eb1453886","input":"0xa9059cbb000000000000000000000000075e72a5edf65f0a5f44699c7654c1a76941ddc800000000000000000000000000000000000000000000002b4f1b99bd31e8ab56","nonce":"0x5e","to":"0x725c263e32c72ddc3a19bea12c5a0479a81ee688","transactionIndex":null,"value":"0x0","type":"0x2","accessList":[],"chainId":"0x1","v":"0x1","r":"0xff4fd2a73df3e12a7faa8e8301f88eba1cfd1604f9da8f411db9775230d5bc03","s":"0xe59920303cdd1cd08dd58b3fd910a8cb6ba1b1a4ab531e2163068167af99b68"}},"0x15dd97892d99c51c2322465eeda9beec60b44578c8e6eab7c409bda7e7d84c98":{"6":{"blockHash":null,"blockNumber":null,"from":"0x3a9623feaf8b18b4bc8ccdcb8e1dfac4c2ab30a6","gas":"0xb51c","gasPrice":"0x1876e6d18a","maxFeePerGas":"0x1876e6d18a","maxPriorityFeePerGas":"0x59682f00","hash":"0x15dd97892d99c51c2322465eeda9beec60b44578c8e6eab7c409bda7e7d84c98","input":"0x095ea7b3000000000000000000000000e5c783ee536cf5e63e792988335c4255169be4e1ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff","nonce":"0x6","to":"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2","transactionIndex":null,"value":"0x0","type":"0x2","accessList":[],"chainId":"0x1","v":"0x1","r":"0x58f6392fdafe56e4a795f072198f03377c56727261019bea49a280b20befa235","s":"0x69fe04033bb3bda8f5903c60244ad381fea57ac9dffdebb4b2c1dad921f77707"}},"0x4ef1e889d0dd10e1c169d5affffad9d21680591c7033977af69a625d80147d7e":{"7":{"blockHash":null,"blockNumber":null,"from":"0x3a9623feaf8b18b4bc8ccdcb8e1dfac4c2ab30a6","gas":"0xb51c","gasPrice":"0x19ad147151","maxFeePerGas":"0x19ad147151","maxPriorityFeePerGas":"0x540ae480","hash":"0x4ef1e889d0dd10e1c169d5affffad9d21680591c7033977af69a625d80147d7e","input":"0x095ea7b3000000000000000000000000e5c783ee536cf5e63e792988335c4255169be4e1ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff","nonce":"0x7","to":"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2","transactionIndex":null,"value":"0x0","type":"0x2","accessList":[],"chainId":"0x1","v":"0x0","r":"0xaf638837d0d6390f5c274c16661961aa57cef5fb047ef26c6ad5a2cc3eac1d7","s":"0x65fedf4c9aa675f746a389767b48bc52cff7add41e7266178a4ecbbd1a9d4cb6"}},"0xfab1b4a4b7d261badff8836b88517533f4bf28b4ee844eccffa13f7a8ebf9462":{"5":{"blockHash":null,"blockNumber":null,"from":"0x5060734d755a235b8fb6a2769824ee07ce1e0e1d","gas":"0x5208","gasPrice":"0x214b76d600","maxFeePerGas":"0x214b76d600","maxPriorityFeePerGas":"0x77359400","hash":"0xfab1b4a4b7d261badff8836b88517533f4bf28b4ee844eccffa13f7a8ebf9462","input":"0x","nonce":"0x5","to":"0x5060734d755a235b8fb6a2769824ee07ce1e0e1d","transactionIndex":null,"value":"0x34102cc9e63","type":"0x2","accessList":[],"chainId":"0x1","v":"0x1","r":"0xb592b6a3ab31000297941480d504aa03e8368cee66f0bdc36fb869ee37c44c9c","s":"0x3be9c27ecf1ad1b7ddfc886f2f107248da52729fb1d760cfc031c719af6a0eb8"}},"0xe5f74e7e3d8bbc47341e2c30d38166d7f7fa76807597acc9d2f5d0ede6f775b5":{"9":{"blockHash":null,"blockNumber":null,"from":"0x5060734d755a235b8fb6a2769824ee07ce1e0e1d","gas":"0x5208","gasPrice":"0x2cefb24a00","maxFeePerGas":"0x2cefb24a00","maxPriorityFeePerGas":"0x77359400","hash":"0xe5f74e7e3d8bbc47341e2c30d38166d7f7fa76807597acc9d2f5d0ede6f775b5","input":"0x","nonce":"0x9","to":"0x9ccf394fdbeec9926cb1ae877cc28c606fbd2cab","transactionIndex":null,"value":"0x68ce6f220edaa","type":"0x2","accessList":[],"chainId":"0x1","v":"0x0","r":"0xc3f2cb393319e6506f0fb2ebc46c19d6ad2838577dcf8f049f00b8e117423c35","s":"0x777c0ec1daf7ba7f030356a60ea3be11217fb319c77a5367e00a0423ae535636"}},"0x313cec5a71bfdbb3e50550f6289c1a0ab9b8150ada201f8eebebf6f1936fdac5":{"10":{"blockHash":null,"blockNumber":null,"from":"0x5060734d755a235b8fb6a2769824ee07ce1e0e1d","gas":"0x5208","gasPrice":"0x400746fe00","maxFeePerGas":"0x400746fe00","maxPriorityFeePerGas":"0x77359400","hash":"0x313cec5a71bfdbb3e50550f6289c1a0ab9b8150ada201f8eebebf6f1936fdac5","input":"0x","nonce":"0xa","to":"0x5060734d755a235b8fb6a2769824ee07ce1e0e1d","transactionIndex":null,"value":"0x346fe398e12","type":"0x2","accessList":[],"chainId":"0x1","v":"0x1","r":"0x79f0f6dcd1cd931c8cd5ceaf86e412a0a60226cda3f82a064af71b86493601ee","s":"0x291185c574299706653983845210e33629d428e5e4b92a5f0fcc6868a3427d7b"}},"0xfe972fd2b99babab1d0b038456c7d97a62714cbbf6983ad180cc2113b7d11ae8":{"11":{"blockHash":null,"blockNumber":null,"from":"0x5060734d755a235b8fb6a2769824ee07ce1e0e1d","gas":"0x5208","gasPrice":"0x13532f7e00","maxFeePerGas":"0x13532f7e00","maxPriorityFeePerGas":"0x77359400","hash":"0xfe972fd2b99babab1d0b038456c7d97a62714cbbf6983ad180cc2113b7d11ae8","input":"0x","nonce":"0xb","to":"0x5060734d755a235b8fb6a2769824ee07ce1e0e1d","transactionIndex":null,"value":"0x34796070b78","type":"0x2","accessList":[],"chainId":"0x1","v":"0x1","r":"0x6f40aaf13320a8a05d9e2c123524f9204a09614c166e5979522cbfddc38528fe","s":"0x393a10aeab49e2751f2db15e4f94a973730f1728a2b2b1db92b614f7e7cb4dae"}}}}}
+
+```
 
 
 ## Quick answers
