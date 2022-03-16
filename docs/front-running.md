@@ -75,7 +75,7 @@ sendRawTransaction(txData).then(result => {
 ### b) END-USERS: Add the Front-running endpoint to your wallet (e.g. MetaMask or Brave):
 Navigate to the Networks dropdown menu and click "Add Network". Paste your RPC URL. Set the Chain ID to 1 (ignore an error message). Save. MetaMask or another wallet provider will use *eth_sendRawTransaction* automatically.
 
-![MetaMask Custom Nettwork](https://miro.medium.com/max/700/1*Uq4Em1cncwNR99XDHn6N5Q.png)
+![MetaMask Custom Nettwork](https://miro.medium.com/max/1400/1*1LNnuLpWXpbJNfjI0hibcA.png)
 
 
 ## Unlimited TX fee and infinite Gas
@@ -144,7 +144,8 @@ curl -X POST -H 'Content-type: application/json' -d '{"jsonrpc": "2.0", "method"
 
 
 ## Purchase
-Front-Running is the extension of any paid plans and can be purchased here: <br/>
-https://dashboard.zmok.io/upgrade
+Front-Running is the extension of any paid plans and can be purchased [in your Dashboard](https://dashboard.zmok.io/upgrade)
+![Purchase FR](https://miro.medium.com/max/2000/1*UNYURu1E8PV5a4-1a4f1fQ.png) <br>
 
-Don't forget to check the Front-running checkbox, then create a new App with NETWORK: MAINNET FRONT-RUNNING.
+Then create a new App with NETWORK: MAINNET FRONT-RUNNING.
+![Add new endpoint](https://miro.medium.com/max/1400/1*YX-pSkgXGYcSuMwV0VJPMg.png)
