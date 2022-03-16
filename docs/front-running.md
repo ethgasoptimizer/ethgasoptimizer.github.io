@@ -144,7 +144,7 @@ curl -X POST -H 'Content-type: application/json' -d '{"jsonrpc": "2.0", "method"
 
 
 ## Purchase
-Front-Running is the extension of any paid plans and can be purchased [in your Dashboard](https://dashboard.zmok.io/upgrade)
+Front-Running is the extension of any paid plans and can be purchased [in your Dashboard](https://dashboard.zmok.io/upgrade) by clicking "Front-Running extension" checkbox.
 ![Purchase FR](https://miro.medium.com/max/2000/1*UNYURu1E8PV5a4-1a4f1fQ.png) <br>
 
 Then create a new App with NETWORK: MAINNET FRONT-RUNNING.
