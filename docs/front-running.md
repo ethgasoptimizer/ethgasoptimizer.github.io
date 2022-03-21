@@ -88,7 +88,7 @@ Users with the Front-running extension have access to endpoints/nodes with preco
 ## Global Tx mempool
 With Front-running extension users have also access to pending/queued transaction from multiple regions.
 
-When accessing Tx mempool from single node, you can get about 2k - 6k transactions from mempool, with ZMOK global mempool you can get more than 50k pending/queued transactions in real-time.
+When accessing Tx mempool from single node, you can get about 2k - 6k transactions from mempool. With ZMOK global TX mempool you can get more than 120-160k pending/queued transactions in real-time.
 
 | Method |
 | ------ |
