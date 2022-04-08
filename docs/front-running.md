@@ -139,9 +139,10 @@ curl -X POST -H 'Content-type: application/json' -d '{"jsonrpc": "2.0", "method"
 Returns a list with the exact details of all the pending/queued transactions in mempools based on search criteria.
 
 **Parameters:**<br/>
-1: from - (optional) exact match in the from property<br/>
-2: to - (optional) exact match in the to property<br/>
-3: input - (optional) wildcard match of the input data<br/>
+1: from - (optional) exact match in the transaction 'from' property<br/>
+2: to - (optional) exact match in the transaction 'to' property<br/>
+3: value - (optional) exact match in the transaction 'value' property<br/>
+4: input - (optional) wildcard match of the transaction 'input' data<br/>
 
 **More details:**<br/>
 To decode input data of any known transaction you could use this library:
