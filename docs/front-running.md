@@ -174,6 +174,8 @@ curl -X POST -H 'Content-type: application/json' -d '{"jsonrpc": "2.0", "method"
 
 ```
 
+?> INFO: Maximum results for zmk_txpool_search are limited to 10 000 results. For optimal results use broader criteria in parameters.
+
 
 ## Quick answers
 - Is it a Layer2 solution? - No
