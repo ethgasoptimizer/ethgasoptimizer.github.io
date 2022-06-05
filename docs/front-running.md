@@ -154,12 +154,6 @@ Or alternatively you could resolve smart contract method from the method signatu
 
 **Wildcard matching support:**
 - Wildcards (\*, ?, \**)
-- Negation ('!a/\*.js', '\*!(b).js')
-- extglobs (+(x|y), !(a|b))
-- POSIX character classes
-- brace expansion (foo/{1..5}.md, bar/{a,b,c}.js)
-- regex character classes (foo-[1-5].js)
-- regex logical "or" (foo/(abc|xyz).js)
 
 **Example:**<br/>
 Sample usage how to get all pending/queued transactions to Uniswap V2 Router (0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D) with method call:
