@@ -173,7 +173,7 @@ curl -X POST -H 'Content-type: application/json' -d '{"jsonrpc": "2.0", "method"
 ?> INFO: Maximum results for zmk_txpool_search are limited to 10 000 results. For optimal results use broader criteria in parameters.
 
 ### zmk_txpool_query
-Returns a list with the exact details of all the transactions currently pending and queued transactions based on the input query.
+Returns a list with the exact details of all the transactions currently pending and queued based on the input query.
 
 **Parameters:**<br/>
 1: query - (optional) SQL-like syntax query <br/>
