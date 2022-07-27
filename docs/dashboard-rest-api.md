@@ -18,11 +18,11 @@ Basic dashboard CRUD operations with REST API
 - Content-Type: application/json
 
 **Request payload:**<br/>
-- **publicAddress** - wallet address<br/>
-- **signature** - signed message with wallet signer claims to own.<br/><br/> To get valid signature hash, go to: https://etherscan.io/verifiedSignatures#, connect your wallet and sign this message:<br/> "Hi there from ZMOK! Sign this message to prove you have access to this wallet and we'll log you in. This won't cost you any Ether." <br/><br/>
-Click Sign Message. You should see the signature hash for your signed message right afterward.<br/>
+- **publicAddress** - a checksummed wallet address<br/>
+- **signature** - signed message with wallet signer claims to own<br/><br/> To get valid signature hash, go to: https://docs.zmok.io/eth-message-sign/dist/index.html, connect your wallet and sign requested message<br/><br/>
+Click Sign. You should see the result signature right afterward.<br/>
 
-<img src="https://raw.githubusercontent.com/zmok-io/zmok-io.github.io/main/docs/assets/sign_message_sample.png" width="350">
+<img src="https://raw.githubusercontent.com/zmok-io/eth-message-sign/master/static/preview.png" width="500">
 
 **Example:**
 
@@ -41,7 +41,7 @@ curl https://api.zmok.io/be/user/login \
 
 **Request payload:**<br/>
 - **username** - username used when user sign-in to dashboard<br/>
-- **password** - user password in plain text
+- **password** - password in plain text
 
 **Example:**
 
