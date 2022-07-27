@@ -124,8 +124,8 @@ curl -X POST -H 'Content-type: application/json' -d '{"jsonrpc": "2.0", "method"
 Returns a list with the exact details of all the transactions currently pending for inclusion in the next block(s), as well as the ones that are being scheduled for future execution only.
 
 **Parameters:**<br/>
-1: offset - (optional) start index (default is 0)<br/>
-2: limit - (optional) number of items to return (default/maximum is 10000)<br/>
+- **offset** - (optional) start index (default is 0)<br/>
+- **limit** - (optional) number of items to return (default/maximum is 10000)<br/>
 
 **Example:**
 
@@ -140,10 +140,10 @@ curl -X POST -H 'Content-type: application/json' -d '{"jsonrpc": "2.0", "method"
 Returns a list with the exact details of all the pending/queued transactions in mempools based on search criteria.
 
 **Parameters:**<br/>
-1: from - (optional) exact match in the transaction 'from' property<br/>
-2: to - (optional) exact match in the transaction 'to' property<br/>
-3: value - (optional) exact match in the transaction 'value' property<br/>
-4: input - (optional) wildcard match of the transaction 'input' data<br/>
+- **from** - (optional) exact match in the transaction 'from' property<br/>
+- **to** - (optional) exact match in the transaction 'to' property<br/>
+- **value** - (optional) exact match in the transaction 'value' property<br/>
+- **input** - (optional) wildcard match of the transaction 'input' data<br/>
 
 **More details:**<br/>
 To decode input data of any known transaction you could use this library:
@@ -176,7 +176,7 @@ curl -X POST -H 'Content-type: application/json' -d '{"jsonrpc": "2.0", "method"
 Returns a list with the exact details of all the transactions currently pending and queued based on the input query.
 
 **Parameters:**<br/>
-1: query - (optional) SQL-like syntax query <br/>
+- **query** - (optional) SQL-like syntax query <br/>
 
 **Example:**
 

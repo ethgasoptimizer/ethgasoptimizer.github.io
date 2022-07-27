@@ -217,6 +217,8 @@ If you are interested in inspecting historical data (data outside of the most re
 
 [Performance Tuning](performance-tuning.md ':include')
 
+[Dashboard REST API](dashboard-rest-api.md ':include')
+
 [FAQ](faq.md ':include')
 
 # Support
