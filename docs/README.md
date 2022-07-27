@@ -39,23 +39,23 @@ Below is a quick command-line example using curl:
 ?> **NOTE: Be sure to replace YOUR-APP-ID with an APP ID from your ZMOK dashboard**
 
 ```sh
-$ curl -X POST \
+curl "https://api.zmok.io/mainnet/YOUR-APP-ID" \
+-X POST \
 -H "Content-Type: application/json" \
---data '{"jsonrpc": "2.0", "id": 1, "method": "eth_blockNumber", "params": []}' \
-"https://api.zmok.io/mainnet/YOUR-APP-ID"
+--data '{"jsonrpc": "2.0", "id": 1, "method": "eth_blockNumber", "params": []}'
 ```
 
 The result should look something like this:
 
 ```sh
-$ {"jsonrpc": "2.0","result": "0x657abc", "id":1}
+{"jsonrpc": "2.0","result": "0x657abc", "id":1}
 ```
 
 [Read more about JSON-RPC](https://github.com/ethereum/wiki/wiki/JSON-RPC)
 
 Same request could be also made with WebSocket:
 ```sh
-$ wscat -c wss://api.zmok.io/mainnet/YOUR-APP-ID
+wscat -c wss://api.zmok.io/mainnet/YOUR-APP-ID
 > {"jsonrpc": "2.0", "id": 1, "method": "eth_blockNumber", "params": []}
 < {"jsonrpc":"2.0","id":1,"result":"0x657abc"}
 ```
@@ -120,6 +120,7 @@ Mempool is a waiting area for the transactions that haven't been added to a bloc
 |zmk_txpool_status|
 |zmk_txpool_content|
 |zmk_txpool_search|
+|zmk_txpool_query|
 
 ?> INFO: ZMOK global Tx mempool - methods zmk_txpool_* are available only for users with Front-running extension.
 
