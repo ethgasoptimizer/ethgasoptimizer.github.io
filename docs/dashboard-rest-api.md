@@ -1,5 +1,5 @@
 # Dashboard REST API
-Basic CRUD operations with REST API
+Basic dashboard CRUD operations with REST API
 
 | Method| Operation|Descriptions|
 | ------ |------ |------ |
@@ -12,7 +12,7 @@ Basic CRUD operations with REST API
 
 ## Authentification
 
-#### Authenticate with Web3
+### Authenticate with Web3
 
 **Request headers:**<br/>
 - Content-Type: application/json
@@ -35,7 +35,7 @@ curl https://api.zmok.io/be/user/login \
  {"accessToken":"eyKhbFciOiJIUzUxMiJ9.eyJzdWIiOiI1ODRjYzg1Mi0zMDgyLTQwYTEtYjNkNy02MTBjZmU2NjliYjkiLCJpYXQiOjE2NTg5MTA1OTgsImV4cCI6MTY1ODkyMDU5OH0.me4XKb3yRa6n8--NThhVSXZ8EhKNMTLfAq1K-jDypcmZP28RhouvH56CPtQmqIvR3GYSZCvH_CyJqRYn4Xt05A","tokenType":"Bearer","userName":"","publicAddress":"0x35bd3a5546a0f785fea24ffbc9fe552014852014","userAvatar":"","userId":"582cc852-2082-40a1-b3d7-610cfe669bb9","userCreated":1614319732381,"userEmail":"","wallet":true}
 ```
 
-#### Authenticate with Username/Password
+### Authenticate with Username/Password
 **Request headers:**<br/>
 - Content-Type: application/json
 
