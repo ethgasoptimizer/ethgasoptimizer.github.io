@@ -5,8 +5,8 @@ Basic dashboard CRUD operations with REST API
 | ------ |------ |------ |
 |POST|https://api.zmok.io/be/user/login| Authenticate with Web3|
 |POST|https://api.zmok.io/be/user/signin| Authenticate with Username/Password|
-|GET|https://api.zmok.io/be/app/all| List of available Apps|
-|POST|https://api.zmok.io/be/app| Create new App|
+|GET|https://api.zmok.io/be/app/all| List all available Apps|
+|POST|https://api.zmok.io/be/app| Create a new App|
 |PUT|https://api.zmok.io/be/app/APP_ID| Update existing App with APP_ID|
 |DELETE|https://api.zmok.io/be/app/APP_ID| Remove App with APP_ID|
 
@@ -20,11 +20,11 @@ Basic dashboard CRUD operations with REST API
 **Request payload:**<br/>
 - **publicAddress** - a checksummed wallet address<br/>
 - **signature** - signed message with wallet signer claims to own<br/><br/> To get valid signature hash, go to: https://docs.zmok.io/eth-message-sign/dist/index.html, connect your wallet and sign requested message<br/><br/>
-Click Sign. You should see the result signature right afterward.<br/>
+Click Sign. You should see the resulting signature right afterwards.<br/>
 
 <img src="https://raw.githubusercontent.com/zmok-io/eth-message-sign/master/static/preview.png" width="500">
 
-**Example:**
+**Create your access token using your public address and given signature:**
 
 ```sh
 curl https://api.zmok.io/be/user/login \
@@ -52,7 +52,7 @@ curl https://api.zmok.io/be/user/signin \
 -d '{"username":"johndoe","pass":"passInPlainText123"}'
 ```
 
-## List of available Apps
+## List all available Apps
 **Request headers:**<br/>
 - Content-Type: application/json
 - Authorization: Bearer ACCESS_TOKEN
@@ -65,7 +65,7 @@ curl https://api.zmok.io/be/app/all \
 -H "Authorization: Bearer eyKhbFciOiJIUzUxMiJ9.eyJzdWIiOiI1ODRjYzg1Mi0zMDgyLTQwYTEtYjNkNy02MTBjZmU2NjliYjkiLCJpYXQiOjE2NTg5MTA1OTgsImV4cCI6MTY1ODkyMDU5OH0.me4XKb3yRa6n8--NThhVSXZ8EhKNMTLfAq1K-jDypcmZP28RhouvH56CPtQmqIvR3GYSZCvH_CyJqRYn4Xt05A"
 ```
 
-## Create new App
+## Create a new App
 **Request headers:**<br/>
 - Content-Type: application/json
 - Authorization: Bearer ACCESS_TOKEN
@@ -75,9 +75,17 @@ curl https://api.zmok.io/be/app/all \
 curl https://api.zmok.io/be/app \
 -X POST \
 -H "Content-Type: application/json" \
--H "Authorization: Bearer  eyKhbFciOiJIUzUxMiJ9.eyJzdWIiOiI1ODRjYzg1Mi0zMDgyLTQwYTEtYjNkNy02MTBjZmU2NjliYjkiLCJpYXQiOjE2NTg5MTA1OTgsImV4cCI6MTY1ODkyMDU5OH0.me4XKb3yRa6n8--NThhVSXZ8EhKNMTLfAq1K-jDypcmZP28RhouvH56CPtQmqIvR3GYSZCvH_CyJqRYn4Xt05A
--d '{"key": "","name":"Test App2","userId":"584cc852-3082-40a1-b3d7-610cfe669bb9","description":"","network":"MAINNET","upstream":"eth","reqPerSecLimit":"10","reqPerMonthLimit":"2000","createdAt":-1,"updatedAt":-1}'"
+-H "Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjN2FlODI4OS03NTlmLTQ4ZTAtYmI3Ni1jMzc0NjRmNTczMTUiLCJpYXQiOjE2NTkwNDEwMjUsImV4cCI6MTY1OTA1MTAyNX0.mkVGcS9jb3ss4zGOh0SQ6yiGGlpcuzIG5xBFOrUj5_Urrafy51aL7OR5dsNSos1jJoYrGJ6njWtUI4K_U59Fbg"
+-d '{"key": "","name":"Built using API","userId":"c7ae8289-759f-48e0-bb76-c37464f57315","description":"The API was used","upstream":"eth","reqPerSecLimit":"10","reqPerMonthLimit":"2000","createdAt":-1,"updatedAt":-1}'
 ```
+
+|upstream|Description|
+|------ |------ |
+|eth| Mainnet|
+|fr| Mainnet Front-running|
+|rinkeby| Testnet - Rinkeby|
+|ropsten| Ropsten|
+|archive| Mainnet Archive|
 
 ## Update existing App
 **Request headers:**<br/>
@@ -86,11 +94,11 @@ curl https://api.zmok.io/be/app \
 
 **Example:**
 ```sh
-curl https://api.zmok.io/be/app/fcta8llfbaccsnu4 \
+curl https://api.zmok.io/be/app/serzibbxzik0szc8 \
 -X PUT \
 -H "Content-Type: application/json" \
--H "Authorization: Bearer eyKhbFciOiJIUzUxMiJ9.eyJzdWIiOiI1ODRjYzg1Mi0zMDgyLTQwYTEtYjNkNy02MTBjZmU2NjliYjkiLCJpYXQiOjE2NTg5MTA1OTgsImV4cCI6MTY1ODkyMDU5OH0.me4XKb3yRa6n8--NThhVSXZ8EhKNMTLfAq1K-jDypcmZP28RhouvH56CPtQmqIvR3GYSZCvH_CyJqRYn4Xt05A \
--d '{"key": "fcta8llfbaccsnu4","name":"Test App3","userId":"584cc852-3082-40a1-b3d7-610cfe669bb9","description":"","network":"MAINNET","upstream":"eth","reqPerSecLimit":"10","reqPerMonthLimit":"2000","createdAt":-1,"updatedAt":-1}'"
+-H "Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjN2FlODI4OS03NTlmLTQ4ZTAtYmI3Ni1jMzc0NjRmNTczMTUiLCJpYXQiOjE2NTkwNDEwMjUsImV4cCI6MTY1OTA1MTAyNX0.mkVGcS9jb3ss4zGOh0SQ6yiGGlpcuzIG5xBFOrUj5_Urrafy51aL7OR5dsNSos1jJoYrGJ6njWtUI4K_U59Fbg" \
+-d '{"key": "serzibbxzik0szc8","name":"Test App3","userId":"c7ae8289-759f-48e0-bb76-c37464f57315","description":"app updated","upstream":"fr","reqPerSecLimit":"5","reqPerMonthLimit":"400","createdAt":-1,"updatedAt":-1}'
 ```
 
 ## Remove App
