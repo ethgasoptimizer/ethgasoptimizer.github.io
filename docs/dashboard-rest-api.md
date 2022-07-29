@@ -1,7 +1,7 @@
 # Dashboard REST API
 Basic dashboard CRUD operations with REST API
 
-| Method| Operation|Descriptions|
+| Method| Operation|Description|
 | ------ |------ |------ |
 |POST|https://api.zmok.io/be/user/login| Authenticate with Web3|
 |POST|https://api.zmok.io/be/user/signin| Authenticate with Username/Password|
@@ -79,13 +79,16 @@ curl https://api.zmok.io/be/app \
 -d '{"key": "","name":"Built using API","userId":"c7ae8289-759f-48e0-bb76-c37464f57315","description":"The API was used","upstream":"eth","reqPerSecLimit":"10","reqPerMonthLimit":"2000","createdAt":-1,"updatedAt":-1}'
 ```
 
-|upstream|Description|
+Upstream is an alias for the Ethereum/ZMOK network, use it as follows:
+
+|Upstream|Network|
 |------ |------ |
 |eth| Mainnet|
 |fr| Mainnet Front-running|
-|rinkeby| Testnet - Rinkeby|
-|ropsten| Ropsten|
 |archive| Mainnet Archive|
+|rinkeby| Testnet - Rinkeby|
+|ropsten| Testnet - Ropsten|
+
 
 ## Update existing App
 **Request headers:**<br/>
