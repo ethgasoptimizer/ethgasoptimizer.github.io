@@ -145,8 +145,10 @@ curl https://api.zmok.io/fr/YOUR-APP-ID \
 
 ```
 
-### zmk_txpool_search
+### ~~zmk_txpool_search~~ - Deprecated
+!> WARN: This method has been deprecated, use zmk_txpool_query instead.
 Returns a list with the exact details of all the pending/queued transactions in mempools based on search criteria.
+
 
 **Parameters:**<br/>
 - **from** - (optional) exact match in the transaction 'from' property<br/>
@@ -154,23 +156,9 @@ Returns a list with the exact details of all the pending/queued transactions in 
 - **value** - (optional) exact match in the transaction 'value' property<br/>
 - **input** - (optional) wildcard match of the transaction 'input' data<br/>
 
-**More details:**<br/>
-To decode input data of any known transaction you could use this library:
-https://github.com/miguelmota/ethereum-input-data-decoder
-
-Or alternatively you could resolve smart contract method from the method signature (first 4-bytes from the input) by using these public databases:
-- https://github.com/ethereum-lists/4bytes
-- https://www.4byte.directory/signatures/?bytes4_signature=0x38ed1739
-
 **Wildcard matching support:**
 - Wildcards (\*, ?, \**)
 
-**Example:**<br/>
-Sample usage how to get all pending/queued transactions to Uniswap V2 Router (0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D) with method call:
-
-<i>swapExactTokensForTokens(uint256,uint256,address[],address,uint256)</i>
-
-This sample usage is often used during the gasPrice analyze of the arbitrages on Uniswap.
 
 ```sh
 curl https://api.zmok.io/fr/YOUR-APP-ID \
@@ -188,9 +176,23 @@ curl https://api.zmok.io/fr/YOUR-APP-ID \
 Returns a list with the exact details of all the transactions currently pending and queued based on the input query.
 
 **Parameters:**<br/>
-- **query** - (optional) SQL-like syntax query <br/>
+- **query** - (optional) SQL-like filter query <br/>
 
-**Example:**
+**More details:**<br/>
+To decode input data of any known transaction you could use this library:
+https://github.com/miguelmota/ethereum-input-data-decoder
+
+Or alternatively you could resolve smart contract method from the method signature (first 4-bytes from the input) by using these public databases:
+- https://github.com/ethereum-lists/4bytes
+- https://www.4byte.directory/signatures/?bytes4_signature=0x38ed1739
+
+**Example:**<br/>
+Sample usage how to get all pending/queued transactions to Uniswap V3 Router (0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45) with method call:
+
+<i>multicall(uint256,bytes[])</i>
+
+This sample usage is often used during the gasPrice analyze of the arbitrages on Uniswap.
+
 
 ```sh
 curl https://api.zmok.io/fr/YOUR-APP-ID \
@@ -201,6 +203,75 @@ curl https://api.zmok.io/fr/YOUR-APP-ID \
 {"queued":{"0xf055aa4b5c7130ddf00515ca47362a4ba69d44eda29d371de187e0327e3f0cb8":{"from":"0xd7996f47f13f56e4f8bbb3c7040dce8ffdaf704c","to":"0x68b3465833fb72a70ecdf485e0e4c7bd8665fc45","gas":"0x5d56e","gasPrice":"0x59682f000","hash":"0xf055aa4b5c7130ddf00515ca47362a4ba69d44eda29d371de187e0327e3f0cb8","input":"0x5ae401dc00000000000000000000000000000000000000000000000000000000622acc9d0000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000124b858183f00000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000080000000000000000000000000d7996f47f13f56e4f8bbb3c7040dce8ffdaf704c000000000000000000000000000000000000000000000000001c6bf526340000000000000000000000000000000000000000000000000000000984d16a0efce90000000000000000000000000000000000000000000000000000000000000042c02aaa39b223fe8d0a0e5c4f27ead9083c756cc20001f4a0b86991c6218b36c1d19d4a2e9eb0ce3606eb480027103819f64f282bf135d62168c1e513280daf905e0600000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000","nonce":"0x1","value":"0x1c6bf526340000","type":"0x2","v":"0x0","r":"0xa6a9a44705e60e9d4df50be947495763b491d574f75127098f6ab343f5b3ccbd","s":"0x4faae862ee2ca1c3ba6e0ce21b54687e9168df663865ec8f3ebfff5885654164","maxFeePerGas":"0x59682f000","maxPriorityFeePerGas":"0x77359400","chainId":"0x1","blockHash":null,"blockNumber":null,"transactionIndex":null,"accessList":[]},"0xf93afad2c099704eb907e6970e873ef1f7795f98c089b419f7d811289b8f7074":{"from":"0xd2aa63b953ea42072a673114a5e0cf7d6b54a1c9","to":"0x68b3465833fb72a70ecdf485e0e4c7bd8665fc45","gas":"0x2fc53","gasPrice":"0x501fa738a","hash":"0xf93afad2c099704eb907e6970e873ef1f7795f98c089b419f7d811289b8f7074","input":"0x5ae401dc0000000000000000000000000000000000000000000000000000000062b2d51c00000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000e404e45aaf000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2000000000000000000000000a0b86991c6218b36c1d19d4a2e9eb0ce3606eb4800000000000000000000000000000000000000000000000000000000000001f4000000000000000000000000d2aa63b953ea42072a673114a5e0cf7d6b54a1c90000000000000000000000000000000000000000000000000011c37937e080000000000000000000000000000000000000000000000000000000000000417c3c000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000","nonce":"0x5","value":"0x11c37937e08000","type":"0x2","v":"0x0","r":"0x39d182bcada06d29cec269dde8d6cbf5a386ab6243086b490c30af6562af35c2","s":"0x7df6fc3632edc895202292a824ac274bc4cc6431695796caf83e61b5db023260","maxFeePerGas":"0x501fa738a","maxPriorityFeePerGas":"0x59682f00","chainId":"0x1","blockHash":null,"blockNumber":null,"transactionIndex":null,"accessList":[]},"0xa7c7cf99c6bb5e344c0f4e73408e06b175a0588f4bc4f1a7df94c3aa0922a635":{"from":"0x030dfd6697f5089a59a19a7634c807bff961923b","to":"0x68b3465833fb72a70ecdf485e0e4c7bd8665fc45","gas":"0x34936","gasPrice":"0x12a05f200","hash":"0xa7c7cf99c6bb5e344c0f4e73408e06b175a0588f4bc4f1a7df94c3aa0922a635","input":"0x5ae401dc0000000000000000000000000000000000000000000000000000000061e11ecb00000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000e4472b43f3000000000000000000000000000000000000000000000000000ffcb9e57d400000000000000000000000000000000000000000000000000004840b2e324d629e0000000000000000000000000000000000000000000000000000000000000080000000000000000000000000030dfd6697f5089a59a19a7634c807bff961923b0000000000000000000000000000000000000000000000000000000000000002000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc20000000000000000000000008b3192f5eebd8579568a2ed41e6feb402f93f73f00000000000000000000000000000000000000000000000000000000","nonce":"0x0","value":"0xffcb9e57d4000","type":"0x0","v":"0x26","r":"0xc1875afc1f71920c1c3647370488b953e827cade690380d40aa75430cdf0de0c","s":"0x2235463c2b4c0fcd7e612eb71aa49691020f1b88e19550e1230eb5756e1f9320","maxFeePerGas":null,"maxPriorityFeePerGas":null,"chainId":null,"blockHash":null,"blockNumber":null,"transactionIndex":null,"accessList":null}}}
 
 ```
+
+
+### zmk_txpool_tx_subscribe
+Websocket subscribe method which returns all new transactions from ZMOK global tx-pool filtered by SQL-like structured query.
+
+**Parameters:**<br/>
+- **query** - (optional) SQL-like filter query <br/>
+
+**Example:**
+
+```js
+var fs = require('fs');
+const WebSocket = require('ws');
+
+const ws = new WebSocket(
+  'wss://api.zmok.io/fr/YOUR_APP_ID', {}
+);
+
+function proceed() {
+    // Method: zmk_txpool_tx_subscribe method (only available at endpoint wss://api.zmok.io/fr/YOUR_APP_ID)
+
+    // Sample 1 - Returns all new pending/queued transactions from tx pool filtered with query
+    // Query: All transactions submited to: Uniswap V3: Router 2 Contract,
+    // calling function:  multicall(uint256 deadline, bytes[] data)
+    // and with gas price greater than 100 Gwei
+    ws.send(`{"jsonrpc": "2.0", "id": 1, \
+    "method": "zmk_txpool_tx_subscribe", \
+    "params": ["('to' = '0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45' \
+    AND 'input' LIKE '0x5ae401dc%' \
+    AND 'gasPrice' > 100000000000 \
+    AND 'value' = '0x0')"]}`);
+
+    // Sample 2 - Returns all new pending/queued transactions from tx pool filtered with query
+    // Query: All transactions submited to: Moonbirds2 Contract,
+    // calling function:  mint(uint256)
+    // ws.send(`{"jsonrpc": "2.0", "id": 1, \
+    // "method": "zmk_txpool_tx_subscribe", \
+    // "params": ["('to' = '0xdb7b094FdC04F51560a03a99F747044951B73727' AND 'input' LIKE '0xa0712d68%')"]}`);
+
+
+    // Sample response message {"jsonrpc":"2.0","id":1,"result":{"pending":{"from":"0x77a6fd93016a84151068227a23671fc1b02195bb","to":"0x68b3465833fb72a70ecdf485e0e4c7bd8665fc45","gas":"0x2cbd7","gasPrice":"0x1bf08eb000","hash":"0x63d7720b05c440014643dbf13929dba4bb50d73a49fa154d8e14881299304cf5","input":"0x5ae401dc000000000000000000000000000000000000000000000000000000006255af0e000000000000000000000000000000000000000000000000000000000000004000000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000016000000000000000000000000000000000000000000000000000000000000000e4472b43f30000000000000000000000000000000000000000000a5249fb3c8b90b41298ae000000000000000000000000000000000000000000000000009513eb7a8e88900000000000000000000000000000000000000000000000000000000000000080000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000020000000000000000000000008e6cd950ad6ba651f6dd608dc70e5886b1aa6b24000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004449404b7c000000000000000000000000000000000000000000000000009513eb7a8e889000000000000000000000000077a6fd93016a84151068227a23671fc1b02195bb00000000000000000000000000000000000000000000000000000000","nonce":"0x9","value":"0x0","type":"0x2","v":"0x1","r":"0x7b8cabf23c55f7c8f74346300a40a4b01107e783c099ad287610881148c1e2d8","s":"0x349725fb7d42a7ce55290f9245dd58de572005cfb784dd06c246d3c888fc82b8","maxFeePerGas":"0x1bf08eb000","maxPriorityFeePerGas":"0x77359400","chainId":"0x1","blockHash":null,"blockNumber":null,"transactionIndex":null,"accessList":[]}}}
+
+
+    // Method: zmk_txpool_tx_unsubscribe
+    // ws.send(`{"jsonrpc": "2.0", "id": 1, \
+    // "method": "zmk_txpool_tx_unsubscribe", \
+    // "params": []}`);
+  }
+
+
+function handle(nextNotification) {
+    console.log(nextNotification.toString()); // or process it generally
+}
+
+// Example with ZMOK Global Tx Pool and SQL-like structured query/filter over websockets
+
+// To run this example:
+// $ npm i ws
+// $ node zmkTxPoolChecker.js
+
+// Ethereum signature database: https://www.4byte.directory/
+
+ws.on('open', proceed);
+ws.on('message', handle);
+```
+
+### zmk_txpool_tx_unsubscribe
+Websocket unsubscribe method.
+
 
 ## Quick answers
 - Is it a Layer2 solution? - No
