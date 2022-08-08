@@ -147,6 +147,7 @@ curl https://api.zmok.io/fr/YOUR-APP-ID \
 
 ### ~~zmk_txpool_search~~ - Deprecated
 !> WARN: This method has been deprecated, use zmk_txpool_query instead.
+
 Returns a list with the exact details of all the pending/queued transactions in mempools based on search criteria.
 
 
