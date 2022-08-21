@@ -1,9 +1,12 @@
 # Front-Running
-Front-running extension makes your transaction being picked by miners almost immediately, in milliseconds. Without Front-running, your transaction needs to wait to be picked and processed by miners, no matter what gas you used.
+The Front-running extension makes your transaction picked by miners almost immediately, in milliseconds. Without Front-running, your transaction needs to wait to be picked and processed by miners, no matter what gas you used. 
 
-Your transaction is sent multi-regionally. When you sign and send your transaction, it is sent to many nodes globally to increase the chances to be noticed by miners. Why? The current Block in Asia may be X while the block in the US is X+2 at the same time. Your transaction is recognised in all regions globally. Without Front-running, it is sent to only one node assigned randomly, so your transaction may keep stuck in a location out of the region where the new block is mined. This way, 99.99% of sent transactions are processed in the next/newest block globally.
+See the Explainer video below:
+[![Watch Explainer video](https://img.youtube.com/vi/1385I_yPlgY/0.jpg)](https://www.youtube.com/watch?v=1385I_yPlgY)
 
-?> **INFO: The order in this newest block is set by gas you used. ZMOK does not set gas, transaction gas is set by you or the app you used.**
+Your transaction is sent multi-regionally. When you sign and send your transaction, it is sent to many nodes globally to increase the chances to be noticed by miners. Your transaction is recognised in all regions globally. Without Front-running, it is sent to only one node assigned randomly, so your transaction may keep stuck in a location out of the region where the new block is mined. This way, 99.99% of sent transactions are processed in the next/newest block globally.
+
+?> **INFO: The order in this newest block is set by the gas you used. ZMOK does not set gas, transaction gas is set by you or the app you used.**
 
 
 ## Sending transactions
@@ -72,10 +75,23 @@ sendRawTransaction(txData).then(result => {
 )
 ```
 
-### END-USERS: Add the Front-running endpoint to your wallet (e.g. MetaMask or Brave):
+### WALLET-USERS: Add the Front-running endpoint to your wallet (e.g. MetaMask or Brave):
 Navigate to the Networks dropdown menu and click "Add Network". Paste your RPC URL. Set the Chain ID to 1 (ignore an error message). Save. MetaMask or another wallet provider will use *eth_sendRawTransaction* automatically.
 
 ![MetaMask Custom Nettwork](https://miro.medium.com/max/1400/1*1LNnuLpWXpbJNfjI0hibcA.png)
+
+### OTHER-SOLUTION-USERS: Add to your solution's RPC settings:
+Find the RPC settings of your solution and paste the FR endpoint. Please mind, that these solutions can consume 3-10 or more API requests per one transaction sent. Some of our official partnerships:
+
+[Waifu](https://zmok-io.medium.com/speed-up-your-waifu-with-zmok-front-running-endpoint-da967a4ab01c)
+
+[NFThunder](https://zmok-io.medium.com/nfthunder-and-zmok-joining-forces-to-hit-the-most-current-block-4e719ccc41db)
+
+[Breeze](https://zmok-io.medium.com/breeze-nfts-via-zmok-front-running-dd0facd8a01)
+
+[Metasniper](https://zmok-io.medium.com/metasnipers-fastest-nft-sniping-comes-with-zmok-s-front-running-8607bd725a5d)
+
+[SilkNFT](https://zmok-io.medium.com/silknft-recommends-zmok-front-running-to-speed-up-your-minting-automation-4d6d02c4ad1c)
 
 
 ## Unlimited TX fee and infinite Gas
@@ -86,9 +102,9 @@ Users with the Front-running extension have access to endpoints/nodes with preco
 !> **WARN: Users who did not purchase Front-running will keep having these [default values](https://geth.ethereum.org/docs/interface/command-line-options) -  max transaction fee: 1 ETH and gas cap 50000000 wei.**
 
 ## Global Tx mempool
-With Front-running extension users have also access to pending/queued transaction from multiple regions.
+With the Front-running extension users have also access to pending/queued transactions from multiple regions.
 
-When accessing Tx mempool from single node, you can get about 2k - 6k transactions from mempool. With ZMOK global TX mempool you can get more than 120-160k pending/queued transactions in real-time.
+When accessing Tx mempool from a single node, you can get about 2k - 6k transactions from mempool. With ZMOK global TX mempool you can get more than 120-160k pending/queued transactions in real-time.
 
 | Method |
 | ------ |
@@ -98,7 +114,7 @@ When accessing Tx mempool from single node, you can get about 2k - 6k transactio
 |zmk_txpool_query|
 
 
-?> INFO: ZMOK global Tx pool - methods zmk_txpool_* are available only for users with Front-running extension.
+?> INFO: ZMOK global Tx pool - methods zmk_txpool_* are available only for users with the Front-running extension.
 
 
 ### zmk_txpool_status
@@ -106,16 +122,6 @@ Returns the number of transactions currently pending for inclusion in the next b
 
 **Example:**
 ```sh
-curl https://api.zmok.io/mainnet/YOUR-APP-ID \
--X POST \
--H 'Content-type: application/json' \
--d '{"jsonrpc": "2.0", "method": "txpool_status", "id": 1}'
-
-{"jsonrpc":"2.0","id":1,"result":{"pending":"0x1400","queued":"0x400"}}
-# 5120 transactions
-
-# vs
-
 curl https://api.zmok.io/fr/YOUR-APP-ID \
 -X POST \
 -H 'Content-type: application/json' \
@@ -124,6 +130,15 @@ curl https://api.zmok.io/fr/YOUR-APP-ID \
 {"jsonrpc":"2.0","id":1,"result":{"pending":"0xdc2e","queued":"0xbbbe","total":"0x197ec"}}
 # 56366 transactions
 
+# vs
+
+curl https://api.zmok.io/mainnet/YOUR-APP-ID \
+-X POST \
+-H 'Content-type: application/json' \
+-d '{"jsonrpc": "2.0", "method": "txpool_status", "id": 1}'
+
+{"jsonrpc":"2.0","id":1,"result":{"pending":"0x1400","queued":"0x400"}}
+# 5120 transactions
 ```
 
 ### zmk_txpool_content
@@ -183,7 +198,7 @@ Returns a list with the exact details of all the transactions currently pending 
 To decode input data of any known transaction you could use this library:
 https://github.com/miguelmota/ethereum-input-data-decoder
 
-Or alternatively you could resolve smart contract method from the method signature (first 4-bytes from the input) by using these public databases:
+Alternatively, you could resolve the smart contract method from the method signature (the first 4-bytes from the input) by using these public databases:
 - https://github.com/ethereum-lists/4bytes
 - https://www.4byte.directory/signatures/?bytes4_signature=0x38ed1739
 
@@ -192,7 +207,7 @@ Sample usage how to get all pending/queued transactions to Uniswap V3 Router (0x
 
 <i>multicall(uint256,bytes[])</i>
 
-This sample usage is often used during the gasPrice analyze of the arbitrages on Uniswap.
+This sample usage is often used during the gasPrice analysis of the arbitrages on Uniswap.
 
 
 ```sh
@@ -226,7 +241,7 @@ function proceed() {
     // Method: zmk_txpool_tx_subscribe method (only available at endpoint wss://api.zmok.io/fr/YOUR_APP_ID)
 
     // Sample 1 - Returns all new pending/queued transactions from tx pool filtered with query
-    // Query: All transactions submited to: Uniswap V3: Router 2 Contract,
+    // Query: All transactions submitted to: Uniswap V3: Router 2 Contract,
     // calling function:  multicall(uint256 deadline, bytes[] data)
     // and with gas price greater than 100 Gwei
     ws.send(`{"jsonrpc": "2.0", "id": 1, \
@@ -237,7 +252,7 @@ function proceed() {
     AND 'value' = '0x0')"]}`);
 
     // Sample 2 - Returns all new pending/queued transactions from tx pool filtered with query
-    // Query: All transactions submited to: Moonbirds2 Contract,
+    // Query: All transactions submitted to: Moonbirds2 Contract,
     // calling function:  mint(uint256)
     // ws.send(`{"jsonrpc": "2.0", "id": 1, \
     // "method": "zmk_txpool_tx_subscribe", \
@@ -258,7 +273,7 @@ function handle(nextNotification) {
     console.log(nextNotification.toString()); // or process it generally
 }
 
-// Example with ZMOK Global Tx Pool and SQL-like structured query/filter over websockets
+// Example with ZMOK Global Tx Pool and SQL-like structured query/filter over WebSockets
 
 // To run this example:
 // $ npm i ws
@@ -279,12 +294,12 @@ Websocket unsubscribe method.
 - Will be reading blockchain faster too? - No
 - It is MEV? - No
 - Do you send my transactions to private miners? - No
-- Can I create multiple FR endpoints? - Yes
+- Can I create multiple FR endpoints? - Yes, as many as you wish.
 
 
 ## Purchase
-Front-Running is the extension of any paid plans and can be purchased [in your Dashboard](https://dashboard.zmok.io/upgrade) by clicking "Front-Running extension" checkbox.
-![Purchase FR](https://miro.medium.com/max/2000/1*UNYURu1E8PV5a4-1a4f1fQ.png) <br>
+Front-Running is the extension of any paid plans and can be purchased [in your Dashboard](https://dashboard.zmok.io/upgrade) by clicking the "Front-Running extension" checkbox.
+![Purchase FR](https://miro.medium.com/max/1400/1*xygc3BLKI-8v7eFMK8QSmg.png) <br>
 
 Then create a new App with NETWORK: MAINNET FRONT-RUNNING.
 ![Add new endpoint](https://miro.medium.com/max/1400/1*YX-pSkgXGYcSuMwV0VJPMg.png)
