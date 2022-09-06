@@ -1,7 +1,7 @@
 # TOR/Onion RPC endpoints
-ZMOK offers endpoints also as a TOR hidden service. Nobody knows who sends the API request, from where and how. This way can not block specific service/user.
+Together with HTTP(S) and WebSockets endpoints, ZMOK offers endpoints as a TOR hidden service. This way, ZMOK and nobody else knows who sends the API request, from where and how. This means, that no service/user can be blocked by some other authority.
 
-?> **INFO: TOR/Onion RPC endpoints are available only for paid accounts as a extension.**
+?> **INFO: TOR/Onion RPC endpoints are available for all paid accounts as an extension for free.**
 
 ## Sample CURL call
 Sample Onion endpoint call via the shared ZMOK SOCKS5 proxy:
@@ -16,4 +16,4 @@ curl "http://zmok2uls65q5ceoxcarpjpa5hlpjxsmeqyapfy3l42ofklmrdbcs4cqd.onion/3c52
 ```
 
 ## TOR Web3 ProviderEngine
-When building safe/unstoppable Web3 application you may find this Web3 ProviderEngine enhanced with [TOR SOCKS5 proxy](https://www.npmjs.com/package/tor-web3-provider-engine) helpful.
+When building safe/untraceable Web3 application, you may find this Web3 ProviderEngine enhanced with [TOR SOCKS5 proxy](https://www.npmjs.com/package/tor-web3-provider-engine) helpful.
