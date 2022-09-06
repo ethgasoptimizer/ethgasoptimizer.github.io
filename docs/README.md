@@ -216,6 +216,8 @@ If you are interested in inspecting historical data (data outside of the most re
 
 [Front-Running](front-running.md ':include')
 
+[TOR/Onion Endpoints](tor.md ':include')
+
 [Performance Tuning](performance-tuning.md ':include')
 
 [Dashboard REST API](dashboard-rest-api.md ':include')
