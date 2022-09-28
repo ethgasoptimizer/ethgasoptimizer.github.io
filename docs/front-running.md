@@ -1,10 +1,10 @@
 # Front-Running
-The Front-running extension makes your transaction picked by miners almost immediately, in milliseconds. Without Front-running, your transaction needs to wait to be picked and processed by miners, no matter what gas you used. 
+The Front-running extension, your transactions will be picked by Validators around the world almost immediately and processed by one of them for the newest block. With optimized gas fees to the highest competing pending transaction, so you win the order.
 
 See the Explainer video below:
 [![Watch Explainer video](https://img.youtube.com/vi/1385I_yPlgY/0.jpg)](https://www.youtube.com/watch?v=1385I_yPlgY)
 
-Your transaction is sent multi-regionally. When you sign and send your transaction, it is sent to many nodes globally to increase the chances to be noticed by miners. Your transaction is recognised in all regions globally. Without Front-running, it is sent to only one node assigned randomly, so your transaction may keep stuck in a location out of the region where the new block is mined. This way, 99.99% of sent transactions are processed in the next/newest block globally.
+Your transaction is sent multi-regionally. When you sign and send your transaction, it is sent to many nodes globally to increase the chances to be noticed by Builders & Validators. Your transaction is recognised in all regions globally. Without Front-running, it is sent to only one node assigned randomly, so your transaction may keep stuck in a location out of the region where the new block is mined. This way, 99.99% of sent transactions are processed in the next/newest block globally.
 
 ?> **INFO: The order in this newest block is set by the gas you used. ZMOK does not set gas, transaction gas is set by you or the app you used.**
 
@@ -30,7 +30,7 @@ const Web3 = require('web3')
 const Tx = require('ethereumjs-tx').Transaction
 
 // connect to ZMOK endpoint enhanced with Front-running
-const web3 = new Web3(new Web3.providers.HttpProvider('https://api.zmok.io/fr/YOUR-APP_ID'))
+const web3 = new Web3(new Web3.providers.HttpProvider('https://api.zmok.io/fr/your-app-ID'))
 
 // the address that will send the test transaction
 const addressFrom = 'FROM-ADDRESS'
@@ -151,7 +151,7 @@ Returns a list with the exact details of all the transactions currently pending 
 **Example:**
 
 ```sh
-curl https://api.zmok.io/fr/YOUR-APP-ID \
+curl https://api.zmok.io/fr/your-app-ID \
 -X POST \
 -H 'Content-type: application/json' \
 -d '{"jsonrpc": "2.0", "method": "zmk_txpool_content", "params":[0, 10], "id": 1}'
@@ -177,7 +177,7 @@ Returns a list with the exact details of all the pending/queued transactions in 
 
 
 ```sh
-curl https://api.zmok.io/fr/YOUR-APP-ID \
+curl https://api.zmok.io/fr/your-app-ID \
 -X POST \
 -H 'Content-type: application/json' \
 -d '{"jsonrpc": "2.0", "method": "zmk_txpool_search", "params":[{"to": "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D", "input": "0x38ed1739*"}], "id": 1}'
@@ -211,7 +211,7 @@ This sample usage is often used during the gasPrice analysis of the arbitrages o
 
 
 ```sh
-curl https://api.zmok.io/fr/YOUR-APP-ID \
+curl https://api.zmok.io/fr/your-app-ID \
 -X POST \
 -H 'Content-type: application/json' \
 -d '{"jsonrpc": "2.0", "method": "zmk_txpool_query", "params":["('\''to'\'' = '\''0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45'\'' AND '\''input'\'' LIKE '\''0x5ae401dc%'\'' AND '\''value'\'' > '\''0x99'\'')"], "id": 1}'
@@ -293,7 +293,7 @@ Websocket unsubscribe method.
 - Is it a Layer2 solution? - No
 - Will be reading blockchain faster too? - No
 - It is MEV? - No
-- Do you send my transactions to private miners? - No
+- Do you send my transactions to private Validators? - No
 - Can I create multiple FR endpoints? - Yes, as many as you wish.
 
 
