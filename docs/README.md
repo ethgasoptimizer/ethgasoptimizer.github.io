@@ -1,4 +1,5 @@
 # ZMOK Documentation
+Ethereum nodes as JSON-RPC / WebSockets API for developers. Endpoints as a TOR hidden service. Front-running as a service. Global TX Mempool.
 The distributed cluster of Ethereum nodes designed for speed, peak performance and high availability.
 
 # Getting Started
@@ -10,36 +11,30 @@ Seamlessly access Ethereum via the ZMOK load-balanced nodes and smart architectu
 ZMOK's Ethereum APIs require a valid APP ID to be included with your request traffic. This identifier should be appended to the request URL.
 
 ```sh
-curl https://api.zmok.io/<NETWORK>/<YOUR-APP-ID>
+curl https://api.zmok.io/<NETWORK>/<your-app-ID>
 ```
 
 ## Choose a Network
 Use one of these endpoints as your Ethereum client provider.
 
-?> **NOTE: Be sure to replace YOUR-APP-ID with an APP ID from your ZMOK dashboard**
+?> **NOTE: Be sure to replace your-app-ID with an APP ID from your ZMOK dashboard**
 
 
 | Network | Endpoint |
 | :---        |    :----   |
-| MAINNET | [https://api.zmok.io/mainnet/YOUR-APP-ID](https://api.zmok.io/mainnet/YOUR-APP-ID)<br/>[wss://api.zmok.io/mainnet/YOUR-APP-ID](wss://api.zmok.io/mainnet/YOUR-APP-ID) |
-| MAINNET - ARCHIVE | [https://api.zmok.io/archive/YOUR-APP-ID](https://api.zmok.io/archive/YOUR-APP-ID)<br/>[wss://api.zmok.io/archive/YOUR-APP-ID](wss://api.zmok.io/archive/YOUR-APP-ID)|
-| MAINNET - FRONT RUNNING | [https://api.zmok.io/fr/YOUR-APP-ID](https://api.zmok.io/fr/YOUR-APP-ID)<br/>[wss://api.zmok.io/fr/YOUR-APP-ID](wss://api.zmok.io/fr/YOUR-APP-ID)|
-| RINKEBY | [https://api.zmok.io/testnet/YOUR-APP-ID](https://api.zmok.io/testnet/YOUR-APP-ID)<br/>[wss://api.zmok.io/testnet/YOUR-APP-ID](wss://api.zmok.io/testnet/YOUR-APP-ID) |
-| ROPSTEN | [https://api.zmok.io/ropsten/YOUR-APP-ID](https://api.zmok.io/ropsten/YOUR-APP-ID)<br/>[wss://api.zmok.io/ropsten/YOUR-APP-ID](wss://api.zmok.io/ropsten/YOUR-APP-ID) |
-
-## Hello World
-Ethereum and Web3.js “Hello World”:
-
-[https://github.com/zmok-io/ethbalance](https://github.com/zmok-io/ethbalance)
+| MAINNET | https://api.zmok.io/mainnet/your-app-ID <br/> wss://api.zmok.io/mainnet/your-app-ID |
+| MAINNET - ARCHIVE | https://api.zmok.io/archive/your-app-ID <br/> wss://api.zmok.io/archive/your-app-ID |
+| MAINNET - FRONT RUNNING | https://api.zmok.io/fr/your-app-ID <br/> wss://api.zmok.io/fr/your-app-ID |
+| GOERLI | https://api.zmok.io/testnet/your-app-ID <br/> wss://api.zmok.io/testnet/your-app-ID |
 
 # Make Requests
 Below is a quick command-line example using curl:
 
 
-?> **NOTE: Be sure to replace YOUR-APP-ID with an APP ID from your ZMOK dashboard**
+?> **NOTE: Be sure to replace your-app-ID with an APP ID from your ZMOK dashboard**
 
 ```sh
-curl "https://api.zmok.io/mainnet/YOUR-APP-ID" \
+curl "https://api.zmok.io/mainnet/your-app-ID" \
 -X POST \
 -H "Content-Type: application/json" \
 --data '{"jsonrpc": "2.0", "id": 1, "method": "eth_blockNumber", "params": []}'
@@ -55,7 +50,7 @@ The result should look something like this:
 
 Same request could be also made with WebSocket:
 ```sh
-wscat -c wss://api.zmok.io/mainnet/YOUR-APP-ID
+wscat -c wss://api.zmok.io/mainnet/your-app-ID
 > {"jsonrpc": "2.0", "id": 1, "method": "eth_blockNumber", "params": []}
 < {"jsonrpc":"2.0","id":1,"result":"0x657abc"}
 ```
@@ -110,7 +105,7 @@ wscat -c wss://api.zmok.io/mainnet/YOUR-APP-ID
 ## Mempool Methods
 Mempool is a waiting area for the transactions that haven't been added to a block and are still unconfirmed. When an Ethereum node receives a transaction, it will propagate the transaction to peer nodes until a miner approves the transaction and adds it to a new block. Before it’s added to the next block, the pending transaction remains in a staging/waiting area called mempool or txpool.
 
-?> **INFO: Mempool methods are available for all users and packages. MAINNET ARCHIVE endpoints do not support mempool methods.**
+?> **INFO: MAINNET ARCHIVE endpoints do not support mempool methods.**
 
 | Method |
 | ------ |
@@ -193,7 +188,7 @@ class TransactionChecker {
   }
 }
 
-let txChecker = new TransactionChecker( "YOUR-APP-ID", '0x3685a78D5b3DB714e74Ea53C072c81CAD9434246');
+let txChecker = new TransactionChecker( "your-app-ID", '0x3685a78D5b3DB714e74Ea53C072c81CAD9434246');
 txChecker.subscribe('pendingTransactions');
 txChecker.watchTransactions();
 ```
@@ -201,7 +196,7 @@ txChecker.watchTransactions();
 # Archive data
 Archive nodes are full nodes running with a special option known as "archive mode". Archive nodes have all the historical data of the blockchain since the genesis block. If you need data from blocks before the last 128 blocks, you’ll want to access an archive node. For example, to use calls like eth_getBalance of an ancient address will only be possible with an archive node, to interact with smart contracts deployed much earlier in the blockchain, etc.
 
-?> **Archive calls are available for all users and packages. Supported networks are: Mainnet Archive, Rinkeby, Ropsten. <br/><br/>Mainnet and Mainnet Front-Running (FR) endpoints do not support archive calls, because these endpoints are optimized for performance and their nodes contain only the pruned data.**
+?> **Archive calls are available for all users and packages. Supported networks are: Mainnet Archive, Goerli. <br/><br/>Mainnet and Mainnet Front-Running (FR) endpoints do not support archive calls, because these endpoints are optimized for performance and their nodes contain only the pruned data.**
 
 
 If you are interested in inspecting historical data (data outside of the most recent 128 blocks), use the following methods:
