@@ -5,7 +5,7 @@ The distributed cluster of Ethereum nodes designed for speed, peak performance a
 # Getting Started
 Getting started with ZMOK (https://zmok.io) takes just a few minutes once you [connected your wallet](https://dashboard.zmok.io/).
 
-Seamlessly access Ethereum via the ZMOK load-balanced nodes and smart architecture the same way you would via your nodes. We have built services and APIs around [JSON RPC](https://github.com/ethereum/wiki/wiki/JSON-RPC) over HTTPS that you can use with your favourite libraries and frameworks, on Ethereum networks - Mainnet, Ropsten, Rinkeby and Mainnet enhanced with Front-running.
+Seamlessly access Ethereum via the ZMOK load-balanced nodes and smart architecture the same way you would via your nodes. We have built services and APIs around [JSON RPC](https://github.com/ethereum/wiki/wiki/JSON-RPC) over HTTPS that you can use with your favourite libraries and frameworks, on Ethereum networks - Mainnet, Goerli and Mainnet enhanced with Front-running.
 
 ## Authenticating using an APP ID
 ZMOK's Ethereum APIs require a valid APP ID to be included with your request traffic. This identifier should be appended to the request URL.
@@ -103,7 +103,7 @@ wscat -c wss://api.zmok.io/mainnet/your-app-ID
 |eth_uninstallFilter|
 
 ## Mempool Methods
-Mempool is a waiting area for the transactions that haven't been added to a block and are still unconfirmed. When an Ethereum node receives a transaction, it will propagate the transaction to peer nodes until a miner approves the transaction and adds it to a new block. Before it’s added to the next block, the pending transaction remains in a staging/waiting area called mempool or txpool.
+Mempool is a waiting area for the transactions that haven't been added to a block and are still unconfirmed. When an Ethereum node receives a transaction, it will propagate the transaction to peer nodes until a Validator approves the transaction and adds it to a new block. Before it’s added to the next block, the pending transaction remains in a staging/waiting area called mempool or txpool.
 
 ?> **INFO: MAINNET ARCHIVE endpoints do not support mempool methods.**
 
