@@ -86,8 +86,7 @@ Upstream is an alias for the Ethereum/ZMOK network, use it as follows:
 |eth| Mainnet|
 |fr| Mainnet Front-running|
 |archive| Mainnet Archive|
-|rinkeby| Testnet - Rinkeby|
-|ropsten| Testnet - Ropsten|
+|testnet| Testnet - Goerli|
 
 
 ## Update existing App
