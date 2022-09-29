@@ -62,7 +62,7 @@ wscat -c wss://api.zmok.io/mainnet/your-app-ID
 |eth_blockNumber|
 |eth_call|
 |eth_chainId|
-|eth_estimateGas|
+|eth_estimateGas - "to" parameter is mandatory|
 |eth_gasPrice|
 |eth_getBalance|
 |eth_getBlockByHash|
