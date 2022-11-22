@@ -71,6 +71,7 @@ wscat -c wss://api.zmok.io/mainnet/your-app-ID
 |eth_getBlockTransactionCountByNumber|
 |eth_getCode|
 |eth_getLogs|
+|eth_getProof|
 |eth_getStorageAt|
 |eth_getTransactionByBlockHashAndIndex|
 |eth_getTransactionByBlockNumberAndIndex|
