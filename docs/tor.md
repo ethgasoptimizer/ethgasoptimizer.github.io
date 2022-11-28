@@ -17,3 +17,12 @@ curl "http://zmok2uls65q5ceoxcarpjpa5hlpjxsmeqyapfy3l42ofklmrdbcs4cqd.onion/3c52
 
 ## TOR Web3 ProviderEngine
 When building safe/untraceable Web3 application, you may find this Web3 ProviderEngine enhanced with [TOR SOCKS5 proxy](https://www.npmjs.com/package/tor-web3-provider-engine) helpful.
+
+## Using TOR/Onion endpoint in Metamask
+MetaMask extension not supporting .onion endopoints, temporaly solution is using fast onion net to clearnet proxy like [tor2web](https://www.tor2web.org).
+
+Simply edit xxxx.onion/xxxx for the xxxx.onion.ly/xxxxx. Navigate to the Networks dropdown menu and click “Add Network”.
+
+![MetaMask Custom Nettwork](https://miro.medium.com/max/4800/1*Qfry53Lthzi1uCglIScaDA.png)
+
+!> **WARN: Be careful of using this temporary solution. Tor2web preserves the anonymity of content publishers but is not itself an anonymity tool and does not offer any protection to users. **
