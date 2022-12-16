@@ -2,7 +2,7 @@
 The Front-running extension, your transactions will be picked by Validators around the world almost immediately and processed by one of them for the newest block. With optimized gas fees to the highest competing pending transaction, so you win the order.
 
 See the Explainer video below:
-[![Watch Explainer video](https://img.youtube.com/vi/1385I_yPlgY/0.jpg)](https://www.youtube.com/watch?v=1385I_yPlgY)
+[![Watch Explainer video](https://img.youtube.com/vi/uVNxdqXhmjo/0.jpg)](https://www.youtube.com/watch?v=uVNxdqXhmjo)
 
 Your transaction is sent multi-regionally. When you sign and send your transaction, it is sent to many nodes globally to increase the chances to be noticed by Builders & Validators. Your transaction is recognised in all regions globally. Without Front-running, it is sent to only one node assigned randomly, so your transaction may keep stuck in a location out of the region where the new block is mined. This way, 99.99% of sent transactions are processed in the next/newest block globally.
 
