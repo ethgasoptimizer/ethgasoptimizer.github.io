@@ -1,8 +1,5 @@
-# Front-Running
-The Front-running extension, your transactions will be picked by Validators around the world almost immediately and processed by one of them for the newest block. With optimized gas fees to the highest competing pending transaction, so you win the order.
-
-See the Explainer video below:
-[![Watch Explainer video](https://img.youtube.com/vi/uVNxdqXhmjo/0.jpg)](https://www.youtube.com/watch?v=uVNxdqXhmjo)
+# Rapid Transaction Propagation + Global Mempool
+ZMOK provides enhanced Mainnet RPC and WS endpoints designed to optimize transaction propagation and ensure the quickest delivery of new blocks through its distributed architecture. Rapid transaction propagation is achieved by submitting transactions using the standard eth_sendRawTransaction method. Our architecture processes this method and submits it to an input relay for global distribution. Also by using the standard eth_sendRawTransaction method, users can benefit from rapid Tx propagation on web3 platforms that utilize MetaMask or comparable injected wallets.
 
 Your transaction is sent multi-regionally. When you sign and send your transaction, it is sent to many nodes globally to increase the chances to be noticed by Builders & Validators. Your transaction is recognised in all regions globally. Without Front-running, it is sent to only one node assigned randomly, so your transaction may keep stuck in a location out of the region where the new block is mined. This way, 99.99% of sent transactions are processed in the next/newest block globally.
 
@@ -30,7 +27,7 @@ const Web3 = require('web3')
 const Tx = require('ethereumjs-tx').Transaction
 
 // connect to ZMOK endpoint enhanced with Front-running
-const web3 = new Web3(new Web3.providers.HttpProvider('https://api.zmok.io/fr/your-app-ID'))
+const web3 = new Web3(new Web3.providers.HttpProvider('https://api.zmok.io/mainnet/your-app-ID'))
 
 // the address that will send the test transaction
 const addressFrom = 'FROM-ADDRESS'
@@ -80,19 +77,6 @@ Navigate to the Networks dropdown menu and click "Add Network". Paste your RPC U
 
 ![MetaMask Custom Nettwork](https://miro.medium.com/max/1400/1*1LNnuLpWXpbJNfjI0hibcA.png)
 
-### OTHER-SOLUTION-USERS: Add to your solution's RPC settings:
-Find the RPC settings of your solution and paste the FR endpoint. Please mind, that these solutions can consume 3-10 or more API requests per one transaction sent. Some of our official partnerships:
-
-[Waifu](https://zmok-io.medium.com/speed-up-your-waifu-with-zmok-front-running-endpoint-da967a4ab01c)
-
-[NFThunder](https://zmok-io.medium.com/nfthunder-and-zmok-joining-forces-to-hit-the-most-current-block-4e719ccc41db)
-
-[Breeze](https://zmok-io.medium.com/breeze-nfts-via-zmok-front-running-dd0facd8a01)
-
-[Metasniper](https://zmok-io.medium.com/metasnipers-fastest-nft-sniping-comes-with-zmok-s-front-running-8607bd725a5d)
-
-[SilkNFT](https://zmok-io.medium.com/silknft-recommends-zmok-front-running-to-speed-up-your-minting-automation-4d6d02c4ad1c)
-
 
 ## Unlimited TX fee and infinite Gas
 Users with the Front-running extension have access to endpoints/nodes with preconfigured parameters:
@@ -122,7 +106,7 @@ Returns the number of transactions currently pending for inclusion in the next b
 
 **Example:**
 ```sh
-curl https://api.zmok.io/fr/YOUR-APP-ID \
+curl https://api.zmok.io/mainnet/YOUR-APP-ID \
 -X POST \
 -H 'Content-type: application/json' \
 -d '{"jsonrpc": "2.0", "method": "zmk_txpool_status", "id": 1}'
@@ -151,7 +135,7 @@ Returns a list with the exact details of all the transactions currently pending 
 **Example:**
 
 ```sh
-curl https://api.zmok.io/fr/your-app-ID \
+curl https://api.zmok.io/mainnet/your-app-ID \
 -X POST \
 -H 'Content-type: application/json' \
 -d '{"jsonrpc": "2.0", "method": "zmk_txpool_content", "params":[0, 10], "id": 1}'
@@ -177,7 +161,7 @@ Returns a list with the exact details of all the pending/queued transactions in 
 
 
 ```sh
-curl https://api.zmok.io/fr/your-app-ID \
+curl https://api.zmok.io/mainnet/your-app-ID \
 -X POST \
 -H 'Content-type: application/json' \
 -d '{"jsonrpc": "2.0", "method": "zmk_txpool_search", "params":[{"to": "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D", "input": "0x38ed1739*"}], "id": 1}'
@@ -211,7 +195,7 @@ This sample usage is often used during the gasPrice analysis of the arbitrages o
 
 
 ```sh
-curl https://api.zmok.io/fr/your-app-ID \
+curl https://api.zmok.io/mainnet/your-app-ID \
 -X POST \
 -H 'Content-type: application/json' \
 -d '{"jsonrpc": "2.0", "method": "zmk_txpool_query", "params":["('\''to'\'' = '\''0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45'\'' AND '\''input'\'' LIKE '\''0x5ae401dc%'\'' AND '\''value'\'' > '\''0x99'\'')"], "id": 1}'
@@ -234,11 +218,11 @@ var fs = require('fs');
 const WebSocket = require('ws');
 
 const ws = new WebSocket(
-  'wss://api.zmok.io/fr/YOUR_APP_ID', {}
+  'wss://api.zmok.io/mainnet/YOUR_APP_ID', {}
 );
 
 function proceed() {
-    // Method: zmk_txpool_tx_subscribe method (only available at endpoint wss://api.zmok.io/fr/YOUR_APP_ID)
+    // Method: zmk_txpool_tx_subscribe method (only available at endpoint wss://api.zmok.io/mainnet/YOUR_APP_ID)
 
     // Sample 1 - Returns all new pending/queued transactions from tx pool filtered with query
     // Query: All transactions submitted to: Uniswap V3: Router 2 Contract,
@@ -297,9 +281,3 @@ Websocket unsubscribe method.
 - Can I create multiple FR endpoints? - Yes, as many as you wish.
 
 
-## Purchase
-Front-Running is the extension of any paid plans and can be purchased [in your Dashboard](https://dashboard.zmok.io/upgrade) by clicking the "Front-Running extension" checkbox.
-![Purchase FR](https://miro.medium.com/max/1400/1*xygc3BLKI-8v7eFMK8QSmg.png) <br>
-
-Then create a new App with NETWORK: MAINNET FRONT-RUNNING.
-![Add new endpoint](https://miro.medium.com/max/1400/1*YX-pSkgXGYcSuMwV0VJPMg.png)
