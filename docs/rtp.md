@@ -1,7 +1,7 @@
 # Rapid Transaction Propagation + Global Mempool
 ZMOK provides enhanced Mainnet RPC and WS endpoints designed to optimize transaction propagation and ensure the quickest delivery of new blocks through its distributed architecture. Rapid transaction propagation is achieved by submitting transactions using the standard eth_sendRawTransaction method. Our architecture processes this method and submits it to an input relay for global distribution. Also by using the standard eth_sendRawTransaction method, users can benefit from rapid Tx propagation on web3 platforms that utilize MetaMask or comparable injected wallets.
 
-Your transaction is sent multi-regionally. When you sign and send your transaction, it is sent to many nodes globally to increase the chances to be noticed by Builders & Validators. Your transaction is recognised in all regions globally. Without Front-running, it is sent to only one node assigned randomly, so your transaction may keep stuck in a location out of the region where the new block is mined. This way, 99.99% of sent transactions are processed in the next/newest block globally.
+Your transaction is sent multi-regionally. When you sign and send your transaction, it is sent to many nodes globally to increase the chances to be noticed by Builders & Validators. Your transaction is recognised in all regions globally. Without PREMIUM plan, it is sent to only one node assigned randomly, so your transaction may keep stuck in a location out of the region where the new block is mined. This way, 99.99% of sent transactions are processed in the next/newest block globally.
 
 ?> **INFO: The order in this newest block is set by the gas you used. ZMOK does not set gas, transaction gas is set by you or the app you used.**
 
@@ -15,7 +15,7 @@ Transactions are sent using the method eth_sendRawTransaction. It requires your 
 
 !> **INFO: Transaction must be signed by your account before is sent to ZMOK. ZMOK has no way to unlock your local account.**
 
-You can use the Front-running endpoint directly in your code, or paste it as a custom RPC to your wallet. Both are using *eth_sendRawTransaction* method.
+You can use the ZMOK endpoint enhanced with RTP (Rapid Transaction Propagation) directly in your code, or paste it as a custom RPC to your wallet. Both are using *eth_sendRawTransaction* method.
 
 ### DEVS: Calling *sendRawTransaction* method directly from your code:
 Sample code:
@@ -26,7 +26,7 @@ Sample code:
 const Web3 = require('web3')
 const Tx = require('ethereumjs-tx').Transaction
 
-// connect to ZMOK endpoint enhanced with Front-running
+// connect to ZMOK endpoint enhanced with RTP
 const web3 = new Web3(new Web3.providers.HttpProvider('https://api.zmok.io/mainnet/your-app-ID'))
 
 // the address that will send the test transaction
@@ -72,9 +72,10 @@ sendRawTransaction(txData).then(result => {
 )
 ```
 
-### WALLET-USERS: Add the Front-running endpoint to your wallet (e.g. MetaMask or Brave):
+### WALLET-USERS: Add the ZMOK endpoint enhanced with RTP (Rapid Transaction Propagation) to your wallet (e.g. MetaMask or Brave):
 Navigate to the Networks dropdown menu and click "Add Network". Paste your RPC URL. Set the Chain ID to 1 (ignore an error message). Save. MetaMask or another wallet provider will use *eth_sendRawTransaction* automatically.
 
+<!--
 ![MetaMask Custom Nettwork](https://miro.medium.com/max/1400/1*1LNnuLpWXpbJNfjI0hibcA.png)
 
 
@@ -84,21 +85,23 @@ Users with the Front-running extension have access to endpoints/nodes with preco
 - *--rpc.gascap=0*  which disables the default max gas fee and makes it infinite</li>
 
 !> **WARN: Users who did not purchase Front-running will keep having these [default values](https://geth.ethereum.org/docs/interface/command-line-options) -  max transaction fee: 1 ETH and gas cap 50000000 wei.**
+-->
 
-## Global Tx mempool
-With the Front-running extension users have also access to pending/queued transactions from multiple regions.
+## Global Tx Mempool
+With the Premium ZMOK plan, users gain unparalleled access to pending and queued transactions across multiple regions, providing a broad and insightful perspective.
 
-When accessing Tx mempool from a single node, you can get about 2k - 6k transactions from mempool. With ZMOK global TX mempool you can get more than 120-160k pending/queued transactions in real-time.
+While accessing the Tx mempool from a single node typically yields about 2,000 to 6,000 transactions from the mempool, the ZMOK global TX mempool significantly amplifies this capacity. Users can now access more than 120,000 to 160,000 pending and queued transactions in real-time, transforming the way they interact with the transaction pool.
+an 120-160k pending/queued transactions in real-time.
 
 | Method |
 | ------ |
 |zmk_txpool_status|
 |zmk_txpool_content|
-|zmk_txpool_search|
+|~~zmk_txpool_search~~|
 |zmk_txpool_query|
 
 
-?> INFO: ZMOK global Tx pool - methods zmk_txpool_* are available only for users with the Front-running extension.
+?> INFO: ZMOK global Tx pool - methods zmk_txpool_* are available only for users with the Premium plan.
 
 
 ### zmk_txpool_status

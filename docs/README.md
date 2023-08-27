@@ -22,9 +22,9 @@ Use one of these endpoints as your Ethereum client provider.
 | Network | Endpoint |
 | :---        |    :----   |
 | MAINNET | https://api.zmok.io/mainnet/your-app-ID <br/> wss://api.zmok.io/mainnet/your-app-ID |
-| MAINNET - ARCHIVE | https://api.zmok.io/archive/your-app-ID <br/> wss://api.zmok.io/archive/your-app-ID |
-| ~~MAINNET - FRONT RUNNING~~* <br/> * Rapid Transaction Propagation and Global Memmpool API is now part of the MAINNET endpoint with valid PREMIUM plan | ~~https://api.zmok.io/fr/your-app-ID~~ <br/> ~~wss://api.zmok.io/fr/your-app-ID~~ |
-| GOERLI | https://api.zmok.io/testnet/your-app-ID <br/> wss://api.zmok.io/testnet/your-app-ID |
+| ~~MAINNET - ARCHIVE~~* <br/>* Discontinued support from August 1, 2023  | https://api.zmok.io/archive/your-app-ID <br/> wss://api.zmok.io/archive/your-app-ID |
+| ~~MAINNET - FRONT RUNNING~~* <br/>* Rapid Transaction Propagation and Global Memmpool API is now part of the MAINNET endpoint with valid PREMIUM plan | ~~https://api.zmok.io/fr/your-app-ID~~ <br/> ~~wss://api.zmok.io/fr/your-app-ID~~ |
+| ~~GOERLI~~*  <br/>* Discontinued support from August 1, 2023 | https://api.zmok.io/testnet/your-app-ID <br/> wss://api.zmok.io/testnet/your-app-ID |
 
 # Make Requests
 Below is a quick command-line example using curl:
