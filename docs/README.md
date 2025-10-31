@@ -62,4 +62,3 @@ All displayed prices use **Gwei**; internally stored as **wei**.
 [Auto-Txs](auto-txs.md ':include')
 
 [FAQ](faq.md ':include')
-
